@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Luxe Strands Studio — Book Your Appointment</title>
+  <meta name="description" content="Demo booking site for Luxe Strands Studio. Sample site by The Booked Beauty System." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f7f1e8;
+      --cream-deep: #efe6d8;
+      --beige: #e8dcc8;
+      --taupe: #a89880;
+      --taupe-dark: #8a7a64;
+      --espresso: #3b2a1f;
+      --espresso-soft: #5c4332;
+      --ink: #2a1f18;
+      --gold: #c4a574;
+      --gold-soft: #d4bc94;
+      --white: #fffcf7;
+      --ok: #3d6b4f;
+      --shadow: 0 18px 50px rgba(59, 42, 31, 0.12);
+      --radius: 18px;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Outfit", system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.6;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, .serif { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 500; letter-spacing: 0.01em; }
+    .container { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--taupe-dark);
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: var(--espresso);
+      color: var(--cream);
+      border: 1px solid var(--espresso);
+      padding: 0.95rem 1.7rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 10px 24px rgba(59, 42, 31, 0.18);
+    }
+    .btn:hover { background: var(--espresso-soft); transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--espresso);
+      border-color: var(--taupe);
+      box-shadow: none;
+    }
+    .btn-ghost:hover { background: rgba(59,42,31,0.06); }
+    .demo-banner {
+      background: var(--espresso);
+      color: var(--cream);
+      text-align: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.55rem 1rem;
+    }
+    .demo-banner span { color: var(--gold-soft); }
+
+    /* Nav */
+    header.site-header {
+      position: sticky; top: 0; z-index: 40;
+      backdrop-filter: blur(14px);
+      background: rgba(247, 241, 232, 0.88);
+      border-bottom: 1px solid rgba(168, 152, 128, 0.28);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.9rem 0; gap: 1rem;
+    }
+    .logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--espresso);
+      line-height: 1.1;
+    }
+    .logo small {
+      display: block;
+      font-family: "Outfit", sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--taupe-dark);
+      font-weight: 400;
+      margin-top: 0.15rem;
+    }
+    .nav-links { display: none; gap: 1.4rem; align-items: center; }
+    .nav-links a {
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      color: var(--espresso-soft);
+    }
+    .nav-links a:hover { color: var(--espresso); }
+    .nav-cta { display: none; }
+    .menu-btn {
+      background: none; border: 1px solid var(--taupe); border-radius: 999px;
+      padding: 0.45rem 0.9rem; font-size: 0.75rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--espresso); cursor: pointer;
+    }
+    .mobile-menu {
+      display: none; flex-direction: column; gap: 0.85rem;
+      padding: 0 0 1rem; border-top: 1px solid rgba(168,152,128,0.25);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 0.95rem; padding: 0.25rem 0; color: var(--espresso); }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: min(92vh, 820px);
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      background: var(--espresso);
+    }
+    .hero-media {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(59,42,31,0.25) 0%, rgba(59,42,31,0.72) 70%, rgba(42,31,24,0.92) 100%),
+        url("img/hero.jpg") center/cover no-repeat;
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      color: var(--cream);
+      padding: 4.5rem 0 3.5rem;
+      max-width: 640px;
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 8vw, 5.2rem);
+      line-height: 0.95;
+      margin-bottom: 1.1rem;
+      font-weight: 500;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold-soft); }
+    .hero p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      opacity: 0.92;
+      max-width: 32rem;
+      margin-bottom: 1.8rem;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .hero .btn { background: var(--cream); color: var(--espresso); border-color: var(--cream); }
+    .hero .btn:hover { background: var(--white); }
+    .hero .btn-ghost { color: var(--cream); border-color: rgba(247,241,232,0.45); }
+
+    /* Sections */
+    section { padding: 4.5rem 0; }
+    .section-head { max-width: 560px; margin-bottom: 2.4rem; }
+    .section-head h2 {
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      line-height: 1.05;
+      color: var(--espresso);
+      margin-bottom: 0.7rem;
+    }
+    .section-head p { color: var(--espresso-soft); font-weight: 300; }
+
+    /* About */
+    .about-grid {
+      display: grid; gap: 2rem;
+      align-items: center;
+    }
+    .about-photo {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      box-shadow: var(--shadow);
+      background: var(--beige);
+    }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .about-copy h2 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 1rem; color: var(--espresso); }
+    .about-copy p { margin-bottom: 1rem; color: var(--espresso-soft); font-weight: 300; }
+    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 1.5rem; }
+    .stat {
+      background: var(--white);
+      border: 1px solid rgba(168,152,128,0.35);
+      border-radius: 14px;
+      padding: 1rem 0.75rem;
+      text-align: center;
+    }
+    .stat strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.7rem;
+      color: var(--espresso);
+      line-height: 1;
+    }
+    .stat span { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--taupe-dark); }
+
+    /* Gallery */
+    .gallery { background: var(--cream-deep); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+    .gallery-grid figure {
+      margin: 0;
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--beige);
+      position: relative;
+      aspect-ratio: 1;
+    }
+    .gallery-grid figure:nth-child(3),
+    .gallery-grid figure:nth-child(6) { aspect-ratio: 4/5; }
+    .gallery-grid img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery-grid figure:hover img { transform: scale(1.04); }
+    .gallery-grid figcaption {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 0.7rem 0.85rem;
+      background: linear-gradient(transparent, rgba(42,31,24,0.75));
+      color: var(--cream);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+    }
+
+    /* Services */
+    .services-list { display: grid; gap: 0.85rem; }
+    .service {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.5rem 1.25rem;
+      align-items: baseline;
+      background: var(--white);
+      border: 1px solid rgba(168,152,128,0.3);
+      border-radius: 16px;
+      padding: 1.15rem 1.25rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .service:hover { border-color: var(--gold); box-shadow: var(--shadow); }
+    .service h3 { font-size: 1.35rem; color: var(--espresso); }
+    .service p { grid-column: 1 / -1; font-size: 0.92rem; color: var(--espresso-soft); font-weight: 300; }
+    .service .meta {
+      text-align: right;
+      font-size: 0.85rem;
+      color: var(--taupe-dark);
+    }
+    .service .price {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.45rem;
+      color: var(--espresso);
+      font-weight: 600;
+    }
+
+    /* Booking */
+    .booking { background: linear-gradient(180deg, var(--cream) 0%, var(--beige) 100%); }
+    .booking-card {
+      background: var(--white);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(168,152,128,0.35);
+      overflow: hidden;
+      display: grid;
+    }
+    .booking-side {
+      background: var(--espresso);
+      color: var(--cream);
+      padding: 1.75rem;
+    }
+    .booking-side h3 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .booking-side p { font-weight: 300; opacity: 0.88; font-size: 0.95rem; margin-bottom: 1.25rem; }
+    .booking-side ul { list-style: none; display: grid; gap: 0.65rem; font-size: 0.9rem; }
+    .booking-side li::before { content: "✦ "; color: var(--gold-soft); }
+    .booking-form-wrap { padding: 1.5rem; }
+    .form-grid { display: grid; gap: 0.95rem; }
+    label {
+      display: grid; gap: 0.35rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--taupe-dark);
+      font-weight: 500;
+    }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid rgba(168,152,128,0.55);
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 0.85rem 0.95rem;
+      font: inherit;
+      color: var(--ink);
+      outline: none;
+      text-transform: none;
+      letter-spacing: normal;
+      font-size: 0.95rem;
+      font-weight: 400;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--espresso);
+      box-shadow: 0 0 0 3px rgba(59,42,31,0.08);
+    }
+    .form-row { display: grid; gap: 0.95rem; }
+    .deposit-note {
+      background: rgba(196,165,116,0.15);
+      border: 1px dashed var(--gold);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      font-size: 0.88rem;
+      color: var(--espresso-soft);
+    }
+    .form-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-top: 0.35rem; }
+    .times {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.45rem;
+    }
+    .times button {
+      border: 1px solid rgba(168,152,128,0.55);
+      background: var(--cream);
+      border-radius: 999px;
+      padding: 0.55rem 0.35rem;
+      font: inherit;
+      font-size: 0.82rem;
+      cursor: pointer;
+      color: var(--espresso);
+    }
+    .times button.selected, .times button:hover {
+      background: var(--espresso);
+      color: var(--cream);
+      border-color: var(--espresso);
+    }
+    .confirm {
+      display: none;
+      text-align: center;
+      padding: 2.5rem 1.25rem;
+    }
+    .confirm.show { display: block; }
+    .confirm .check {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: rgba(61,107,79,0.12); color: var(--ok);
+      display: grid; place-items: center;
+      font-size: 1.8rem; margin: 0 auto 1rem;
+    }
+    .confirm h3 { font-size: 2rem; color: var(--espresso); margin-bottom: 0.5rem; }
+    .confirm p { color: var(--espresso-soft); max-width: 28rem; margin: 0 auto 0.75rem; font-weight: 300; }
+    .confirm .summary {
+      background: var(--cream);
+      border-radius: 14px;
+      padding: 1rem;
+      margin: 1.25rem auto;
+      max-width: 360px;
+      text-align: left;
+      font-size: 0.92rem;
+    }
+    .confirm .summary div { display: flex; justify-content: space-between; gap: 1rem; padding: 0.3rem 0; }
+    .hidden { display: none !important; }
+
+    /* Policies */
+    .policies-grid {
+      display: grid; gap: 1rem;
+    }
+    .policy {
+      background: var(--white);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 14px 14px 0;
+      padding: 1.2rem 1.25rem;
+      box-shadow: 0 8px 24px rgba(59,42,31,0.05);
+    }
+    .policy h3 { font-size: 1.35rem; color: var(--espresso); margin-bottom: 0.35rem; }
+    .policy p { font-size: 0.95rem; color: var(--espresso-soft); font-weight: 300; }
+
+    /* Reviews */
+    .reviews { background: var(--espresso); color: var(--cream); }
+    .reviews .eyebrow { color: var(--gold-soft); }
+    .reviews .section-head h2 { color: var(--cream); }
+    .reviews .section-head p { color: rgba(247,241,232,0.75); }
+    .sample-tag {
+      display: inline-block;
+      border: 1px solid rgba(212,188,148,0.45);
+      color: var(--gold-soft);
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+    .reviews-grid { display: grid; gap: 1rem; }
+    .review {
+      background: rgba(255,252,247,0.06);
+      border: 1px solid rgba(247,241,232,0.12);
+      border-radius: 16px;
+      padding: 1.35rem;
+    }
+    .stars { color: var(--gold-soft); letter-spacing: 0.12em; margin-bottom: 0.6rem; font-size: 0.85rem; }
+    .review p { font-family: "Cormorant Garamond", serif; font-size: 1.25rem; line-height: 1.35; margin-bottom: 1rem; font-style: italic; }
+    .review cite { font-style: normal; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.75; }
+
+    /* Location */
+    .location-grid { display: grid; gap: 1.25rem; }
+    .map-placeholder {
+      border-radius: var(--radius);
+      min-height: 260px;
+      background:
+        linear-gradient(135deg, rgba(59,42,31,0.08), rgba(168,152,128,0.25)),
+        repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(168,152,128,0.18) 24px, rgba(168,152,128,0.18) 25px),
+        repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(168,152,128,0.18) 24px, rgba(168,152,128,0.18) 25px);
+      border: 1px solid rgba(168,152,128,0.4);
+      display: grid; place-items: center; text-align: center; padding: 2rem;
+      color: var(--espresso-soft);
+    }
+    .map-placeholder strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.6rem;
+      color: var(--espresso);
+      margin-bottom: 0.35rem;
+    }
+    .socials { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1.25rem; }
+    .socials a {
+      border: 1px solid var(--taupe);
+      border-radius: 999px;
+      padding: 0.55rem 1rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--espresso);
+    }
+    .socials a:hover { background: var(--espresso); color: var(--cream); border-color: var(--espresso); }
+    .info-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 1.35rem;
+      border: 1px solid rgba(168,152,128,0.3);
+    }
+    .info-card h3 { font-size: 1.4rem; margin-bottom: 0.75rem; color: var(--espresso); }
+    .info-card p { font-size: 0.95rem; color: var(--espresso-soft); margin-bottom: 0.45rem; font-weight: 300; }
+
+    /* FAQ */
+    .faq { background: var(--cream-deep); }
+    details {
+      background: var(--white);
+      border: 1px solid rgba(168,152,128,0.3);
+      border-radius: 14px;
+      padding: 1rem 1.15rem;
+      margin-bottom: 0.7rem;
+    }
+    summary {
+      cursor: pointer;
+      list-style: none;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.3rem;
+      color: var(--espresso);
+      display: flex; justify-content: space-between; gap: 1rem; align-items: center;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font-family: Outfit, sans-serif; font-size: 1.2rem; color: var(--taupe-dark); }
+    details[open] summary::after { content: "–"; }
+    details p { margin-top: 0.7rem; color: var(--espresso-soft); font-weight: 300; font-size: 0.95rem; }
+
+    /* Footer */
+    footer {
+      background: var(--ink);
+      color: rgba(247,241,232,0.72);
+      padding: 2.5rem 0 2rem;
+      text-align: center;
+    }
+    footer .logo { color: var(--cream); margin-bottom: 0.75rem; }
+    footer p { font-size: 0.85rem; max-width: 32rem; margin: 0.35rem auto; font-weight: 300; }
+    footer .demo-credit {
+      margin-top: 1.4rem;
+      padding-top: 1.1rem;
+      border-top: 1px solid rgba(247,241,232,0.12);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--gold-soft);
+    }
+
+    @media (min-width: 720px) {
+      .menu-btn { display: none; }
+      .nav-links, .nav-cta { display: flex; }
+      .about-grid { grid-template-columns: 0.9fr 1.1fr; gap: 3rem; }
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+      .gallery-grid figure:nth-child(1) { grid-row: span 2; aspect-ratio: auto; min-height: 100%; }
+      .form-row { grid-template-columns: 1fr 1fr; }
+      .times { grid-template-columns: repeat(4, 1fr); }
+      .policies-grid { grid-template-columns: repeat(3, 1fr); }
+      .reviews-grid { grid-template-columns: repeat(3, 1fr); }
+      .location-grid { grid-template-columns: 1.2fr 0.8fr; }
+      .booking-card { grid-template-columns: 0.85fr 1.15fr; }
+      .services-list { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 980px) {
+      .services-list { grid-template-columns: 1fr; }
+      .service { grid-template-columns: 1.4fr 1fr auto; align-items: center; }
+      .service p { grid-column: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-banner">Sample demo for <span>The Booked Beauty System</span> — fictional salon, not a live business</div>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="#top">Luxe Strands<small>Studio · Atlanta</small></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#services">Services</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="btn nav-cta" href="#book">Book</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false">Menu</button>
+    </div>
+    <div class="container mobile-menu" id="mobileMenu">
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#services">Services</a>
+      <a href="#book">Book</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-media" role="img" aria-label="Luxury salon atmosphere"></div>
+      <div class="container hero-content">
+        <span class="eyebrow" style="color: var(--gold-soft);">Protective styles · Silk press · Wigs</span>
+        <h1>Hair that feels like <em>luxury</em> every day.</h1>
+        <p>Private suite appointments for knotless braids, silk presses, and seamless wig installs — crafted with patience, precision, and premium products.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#book">Book Your Appointment</a>
+          <a class="btn btn-ghost" href="#services">View Services</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="about-photo">
+          <img src="img/about.jpg" alt="Stylist finishing a braid install" width="900" height="1125" loading="lazy" />
+        </div>
+        <div class="about-copy">
+          <span class="eyebrow">Meet your stylist</span>
+          <h2>Hello, I’m Amara — founder of Luxe Strands Studio.</h2>
+          <p>I specialize in healthy protective styles and polished installs for textured hair. Every appointment is unhurried, consultation-led, and designed to leave you feeling put-together — not just “done.”</p>
+          <p>This page is a fictional demo of what a Booked Beauty System client site can look like: clean branding, clear pricing, and a booking flow that feels premium on mobile.</p>
+          <div class="stat-row">
+            <div class="stat"><strong>8+</strong><span>Years</span></div>
+            <div class="stat"><strong>2.4k</strong><span>Clients</span></div>
+            <div class="stat"><strong>4.9</strong><span>Avg rating</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="gallery">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Portfolio</span>
+          <h2>Recent work</h2>
+          <p>Braids, silk presses, and wig installs — a glimpse of the finish clients leave with.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure><img src="img/g5.jpg" alt="Knotless braids close-up" loading="lazy" /><figcaption>Knotless braids</figcaption></figure>
+          <figure><img src="img/g1.jpg" alt="Braided hairstyle portrait" loading="lazy" /><figcaption>Feed-in braids</figcaption></figure>
+          <figure><img src="img/g9.jpg" alt="Polished silk press" loading="lazy" /><figcaption>Silk press</figcaption></figure>
+          <figure><img src="img/g7.jpg" alt="Wig install styling" loading="lazy" /><figcaption>Wig install</figcaption></figure>
+          <figure><img src="img/g6.jpg" alt="Protective braided style" loading="lazy" /><figcaption>Boho knots</figcaption></figure>
+          <figure><img src="img/g8.jpg" alt="Natural curls finish" loading="lazy" /><figcaption>Wash &amp; define</figcaption></figure>
+          <figure><img src="img/g12.jpg" alt="Salon braid detail" loading="lazy" /><figcaption>Fulani detail</figcaption></figure>
+          <figure><img src="img/g3.jpg" alt="Glam hair finish" loading="lazy" /><figcaption>Glam install</figcaption></figure>
+          <figure><img src="img/g10.jpg" alt="Loc maintenance style" loading="lazy" /><figcaption>Loc styling</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Menu</span>
+          <h2>Services &amp; pricing</h2>
+          <p>Transparent pricing with realistic durations. Final quote confirmed after consultation.</p>
+        </div>
+        <div class="services-list">
+          <article class="service">
+            <h3>Knotless Box Braids</h3>
+            <p>Medium / large parts. Includes wash, blow-dry, and sealing. Hair not included.</p>
+            <div class="meta"><span class="price">from $220</span>4–6 hrs</div>
+          </article>
+          <article class="service">
+            <h3>Boho Knotless Braids</h3>
+            <p>Human-hair curly ends blended for a soft, lived-in finish.</p>
+            <div class="meta"><span class="price">from $280</span>5–7 hrs</div>
+          </article>
+          <article class="service">
+            <h3>Silk Press</h3>
+            <p>Clarifying wash, deep condition, blowout, and silk press with heat protection.</p>
+            <div class="meta"><span class="price">$95</span>2 hrs</div>
+          </article>
+          <article class="service">
+            <h3>Wig Install (Glueless)</h3>
+            <p>Plucking, bleaching knots as needed, and secure glueless install.</p>
+            <div class="meta"><span class="price">from $150</span>2–3 hrs</div>
+          </article>
+          <article class="service">
+            <h3>Lace Frontal Install</h3>
+            <p>Custom melt, baby hairs optional, and styled finish. Wig not included.</p>
+            <div class="meta"><span class="price">from $185</span>3 hrs</div>
+          </article>
+          <article class="service">
+            <h3>Wash, Condition &amp; Style</h3>
+            <p>Gentle cleanse, moisture treatment, and defined air-dry or blowout.</p>
+            <div class="meta"><span class="price">$75</span>90 min</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="book" class="booking">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Appointments</span>
+          <h2>Book your visit</h2>
+          <p>Choose a service, pick a time that works, and secure your spot with a deposit note. Demo only — no real booking is created.</p>
+        </div>
+        <div class="booking-card">
+          <aside class="booking-side">
+            <h3>Private suite booking</h3>
+            <p>One client at a time. Arrive with clean, detangled hair unless your service includes a wash.</p>
+            <ul>
+              <li>$50 deposit holds your slot</li>
+              <li>Confirmation by text</li>
+              <li>Mobile-friendly reschedule link</li>
+              <li>Card on file for no-shows</li>
+            </ul>
+          </aside>
+          <div class="booking-form-wrap">
+            <form id="bookingForm" class="form-grid" novalidate>
+              <label>Service
+                <select id="service" name="service" required>
+                  <option value="">Select a service…</option>
+                  <option value="Knotless Box Braids · from $220 · 4–6 hrs">Knotless Box Braids · from $220</option>
+                  <option value="Boho Knotless Braids · from $280 · 5–7 hrs">Boho Knotless Braids · from $280</option>
+                  <option value="Silk Press · $95 · 2 hrs">Silk Press · $95</option>
+                  <option value="Wig Install (Glueless) · from $150 · 2–3 hrs">Wig Install (Glueless) · from $150</option>
+                  <option value="Lace Frontal Install · from $185 · 3 hrs">Lace Frontal Install · from $185</option>
+                  <option value="Wash, Condition &amp; Style · $75 · 90 min">Wash, Condition &amp; Style · $75</option>
+                </select>
+              </label>
+              <div class="form-row">
+                <label>Preferred date
+                  <input type="date" id="date" name="date" required />
+                </label>
+                <label>Full name
+                  <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required />
+                </label>
+              </div>
+              <label>Phone
+                <input type="tel" id="phone" name="phone" placeholder="(404) 555-0142" autocomplete="tel" required />
+              </label>
+              <div>
+                <label style="margin-bottom:0.45rem;">Available times</label>
+                <div class="times" id="timeSlots" role="group" aria-label="Time slots">
+                  <button type="button" data-time="9:00 AM">9:00 AM</button>
+                  <button type="button" data-time="11:00 AM">11:00 AM</button>
+                  <button type="button" data-time="1:30 PM">1:30 PM</button>
+                  <button type="button" data-time="3:00 PM">3:00 PM</button>
+                  <button type="button" data-time="5:00 PM">5:00 PM</button>
+                  <button type="button" data-time="6:30 PM">6:30 PM</button>
+                </div>
+                <input type="hidden" id="time" name="time" required />
+              </div>
+              <div class="deposit-note">
+                A <strong>$50 non-refundable deposit</strong> is requested to confirm (demo — no payment is processed on this page).
+              </div>
+              <div class="form-actions">
+                <button class="btn" type="submit">Request Appointment</button>
+                <span style="font-size:0.8rem;color:var(--taupe-dark);">Takes under a minute</span>
+              </div>
+            </form>
+            <div class="confirm" id="confirmScreen" aria-live="polite">
+              <div class="check">✓</div>
+              <h3>You’re on the books</h3>
+              <p>This is a demo confirmation. In a live Booked Beauty System site, the client would receive a text/email and deposit link automatically.</p>
+              <div class="summary" id="confirmSummary"></div>
+              <button class="btn btn-ghost" type="button" id="bookAnother">Book another (reset)</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="policies">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Studio policies</span>
+          <h2>How we keep appointments smooth</h2>
+        </div>
+        <div class="policies-grid">
+          <article class="policy">
+            <h3>Deposit</h3>
+            <p>$50 holds your appointment and is applied to your service total. Deposits are non-refundable but transferable once with 48 hours’ notice.</p>
+          </article>
+          <article class="policy">
+            <h3>Cancellation</h3>
+            <p>Please cancel or reschedule at least 48 hours ahead. Late cancellations forfeit the deposit. No-shows may be charged 50% of the booked service.</p>
+          </article>
+          <article class="policy">
+            <h3>Late arrival</h3>
+            <p>A 15-minute grace period applies. After that, your service may be shortened or rescheduled so we stay on time for the next guest.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" class="reviews">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Kind words</span>
+          <h2>Sample reviews</h2>
+          <p>Example copy for demo purposes only — not real client testimonials.</p>
+        </div>
+        <div class="sample-tag">Sample reviews · fictional</div>
+        <div class="reviews-grid">
+          <article class="review">
+            <div class="stars">★★★★★</div>
+            <p>“My knotless braids lasted six weeks without a single itch. The suite felt calm and private — worth every dollar.”</p>
+            <cite>— Sample Client A</cite>
+          </article>
+          <article class="review">
+            <div class="stars">★★★★★</div>
+            <p>“Silk press was soft, shiny, and still bouncing on day four. Booking online was the easiest part of my week.”</p>
+            <cite>— Sample Client B</cite>
+          </article>
+          <article class="review">
+            <div class="stars">★★★★★</div>
+            <p>“Glueless install looked expensive and stayed secure through a wedding weekend. Already rebooked.”</p>
+            <cite>— Sample Client C</cite>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit">
+      <div class="container location-grid">
+        <div>
+          <div class="section-head">
+            <span class="eyebrow">Visit</span>
+            <h2>Studio location</h2>
+            <p>Private suite in Midtown Atlanta. Exact suite number shared after booking.</p>
+          </div>
+          <div class="map-placeholder" role="img" aria-label="Map placeholder">
+            <div>
+              <strong>Map placeholder</strong>
+              1840 Peachtree Demo Ave, Suite —<br />Atlanta, GA 30309<br />
+              <span style="display:block;margin-top:0.75rem;font-size:0.85rem;">Interactive map embeds on live client sites</span>
+            </div>
+          </div>
+        </div>
+        <div class="info-card">
+          <h3>Hours &amp; contact</h3>
+          <p><strong>Tue–Sat</strong> · 9:00 AM – 7:00 PM</p>
+          <p><strong>Sun–Mon</strong> · Closed</p>
+          <p><strong>Text</strong> · (404) 555-0198</p>
+          <p><strong>Email</strong> · hello@luxestrands.demo</p>
+          <div class="socials">
+            <a href="#" aria-label="Instagram (demo link)">Instagram</a>
+            <a href="#" aria-label="TikTok (demo link)">TikTok</a>
+            <a href="#" aria-label="Facebook (demo link)">Facebook</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">FAQ</span>
+          <h2>Before you book</h2>
+        </div>
+        <details>
+          <summary>Do I need to bring hair?</summary>
+          <p>For braiding services, yes — or request a hair add-on during booking. Wig installs require your unit clean and tangle-free.</p>
+        </details>
+        <details>
+          <summary>How does the deposit work on a real site?</summary>
+          <p>In a live Booked Beauty System setup, clients pay the deposit online at booking. This demo only simulates the confirmation screen.</p>
+        </details>
+        <details>
+          <summary>Can I book for kids?</summary>
+          <p>Yes for ages 8+ on select braid services. Please note age in the booking notes on a live site so timing can be adjusted.</p>
+        </details>
+        <details>
+          <summary>What if I’m running late?</summary>
+          <p>Text the studio. After 15 minutes we may need to shorten the service or move you to the next open slot.</p>
+        </details>
+        <details>
+          <summary>Is this a real salon?</summary>
+          <p>No — Luxe Strands Studio is a fictional brand built as a sales demo for The Booked Beauty System.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="logo">Luxe Strands<small>Studio</small></div>
+      <p>Fictional salon website for demonstration only. Photos from Unsplash &amp; Pexels (free license).</p>
+      <p class="demo-credit">Demo site by The Booked Beauty System</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var menuBtn = document.getElementById("menuBtn");
+      var mobileMenu = document.getElementById("mobileMenu");
+      menuBtn.addEventListener("click", function () {
+        var open = mobileMenu.classList.toggle("open");
+        menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      mobileMenu.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          mobileMenu.classList.remove("open");
+          menuBtn.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      var timeInput = document.getElementById("time");
+      document.querySelectorAll("#timeSlots button").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          document.querySelectorAll("#timeSlots button").forEach(function (b) { b.classList.remove("selected"); });
+          btn.classList.add("selected");
+          timeInput.value = btn.getAttribute("data-time");
+        });
+      });
+
+      var dateInput = document.getElementById("date");
+      var tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      dateInput.min = tomorrow.toISOString().slice(0, 10);
+
+      var form = document.getElementById("bookingForm");
+      var confirmScreen = document.getElementById("confirmScreen");
+      var summary = document.getElementById("confirmSummary");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (!form.service.value || !form.date.value || !form.name.value || !form.phone.value || !timeInput.value) {
+          alert("Please complete all fields and select a time.");
+          return;
+        }
+        var d = form.date.value;
+        summary.innerHTML =
+          "<div><span>Service</span><strong>" + form.service.value.split(" · ")[0] + "</strong></div>" +
+          "<div><span>Date</span><strong>" + d + "</strong></div>" +
+          "<div><span>Time</span><strong>" + timeInput.value + "</strong></div>" +
+          "<div><span>Name</span><strong>" + form.name.value + "</strong></div>" +
+          "<div><span>Phone</span><strong>" + form.phone.value + "</strong></div>" +
+          "<div><span>Deposit</span><strong>$50 (demo)</strong></div>";
+        form.classList.add("hidden");
+        confirmScreen.classList.add("show");
+      });
+
+      document.getElementById("bookAnother").addEventListener("click", function () {
+        form.reset();
+        timeInput.value = "";
+        document.querySelectorAll("#timeSlots button").forEach(function (b) { b.classList.remove("selected"); });
+        confirmScreen.classList.remove("show");
+        form.classList.remove("hidden");
+      });
+    })();
+  </script>
+</body>
+</html>
