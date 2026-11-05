@@ -169,38 +169,40 @@ header.nav{
 }
 .pol p{color:var(--muted);font-size:.84rem;line-height:1.45;font-weight:400}
 
-/* CONTACT / HOURS */
-.ch-photos{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;z-index:0}
-.ch-photos img{width:100%;height:100%;max-width:none;object-fit:cover}
-.ch::before{
-  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(rgba(0,0,0,.38),rgba(0,0,0,.5));
+/* CONTACT / HOURS — full portraits, type sitting on the template frames */
+.ch .stage{background:url('img/tpl-ch-bg.jpg') 0 0 / 100% 100% no-repeat}
+.ch-grid{position:absolute;inset:0;z-index:2}
+.obox{position:absolute;color:#fff;text-align:center}
+.ch-grid .obox:first-child{left:9.6%;top:22.6%;width:38.7%;height:71.1%}
+.ch-grid .obox:first-child .script{display:none}
+.ch-grid .hrs{left:51.7%;top:22.9%;width:38.7%;height:71%}
+.obox .script{display:none}
+.obox ul{list-style:none;position:absolute;inset:0}
+.obox li,.hrs .days,.hrs .time,.hrs .weekend{
+  position:absolute;left:0;right:0;
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  font-size:32px;font-weight:500;letter-spacing:.04em;
+  text-shadow:
+    0 0 8px rgba(255,255,255,.95),
+    0 0 18px rgba(255,255,255,.7),
+    0 1px 2px rgba(0,0,0,.9);
 }
-.ch-grid{
-  position:relative;z-index:2;
-  height:100%;display:grid;grid-template-columns:1fr 1fr;
-  gap:3.5%;padding:6.5% 6%;
-}
-.obox{
-  border:1px solid var(--line);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:4% 6%;background:rgba(0,0,0,.18);
-}
-.obox .script{font-size:clamp(48px,5cqw,86px);display:block;margin-bottom:4%}
-.obox ul{list-style:none;display:grid;gap:12px;width:100%}
-.obox li{
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  font-size:.92rem;font-weight:500;
-}
-.obox li svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.4;flex:none}
+.obox li svg{width:34px;height:34px;stroke:#fff;fill:none;stroke-width:1.6;flex:none;filter:drop-shadow(0 0 6px #fff)}
 .obox a{text-decoration:none}
-.hrs .days{font-size:.78rem;letter-spacing:.34em;font-weight:600}
-.hrs .time{display:block;margin-top:6px;font-size:clamp(18px,2cqw,27px);font-weight:500;letter-spacing:.08em}
+.obox li:nth-child(1){top:24%}
+.obox li:nth-child(2){top:42%}
+.obox li:nth-child(3){top:58%}
+.obox li:nth-child(4){top:74%}
+.hrs .days{top:21%;font-size:38px;font-weight:600;letter-spacing:.32em;text-transform:uppercase}
+.hrs .time{top:36%;font-size:34px;font-weight:500;letter-spacing:.06em}
 .hrs .closed{
-  display:inline-block;margin-top:16px;border:1px solid #fff;
-  padding:6px 18px;letter-spacing:.42em;font-size:.72rem;font-weight:600;
+  position:absolute;left:19.1%;top:48%;width:61.2%;height:17.9%;
+  display:grid;place-items:center;
+  background:#000;border:3px solid #fff;margin:0;padding:0 0 0 .28em;
+  letter-spacing:.28em;font-size:30px;font-weight:600;text-transform:uppercase;
+  text-shadow:0 0 8px rgba(255,255,255,.9);
 }
-.hrs .weekend{display:block;margin-top:10px;letter-spacing:.34em;font-size:.78rem;font-weight:600}
+.hrs .weekend{top:74%;font-size:36px;font-weight:600;letter-spacing:.3em;text-transform:uppercase}
 
 /* PREPARE */
 .prep{background:#000}
@@ -321,49 +323,44 @@ select:focus,input:focus{outline:none;border-color:#fff}
 
 /* NOW BOOKING */
 .now{text-align:center}
-.now .stage{display:flex;align-items:center;justify-content:center}
-.now-photos{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;z-index:0}
-.now-photos img{width:100%;height:100%;max-width:none;object-fit:cover;filter:brightness(1.08) contrast(1.04)}
-.now::before{
-  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.4));
+.now .stage{
+  background:url('img/tpl-now-bg.jpg') 0 0 / 100% 100% no-repeat;
 }
-.now-in{position:relative;z-index:2;padding:4% 4% 5%;width:100%}
-.now .script{font-size:clamp(45px,5cqw,80px);display:block}
-.month-svg{width:min(1080px,96%);height:auto;display:block;margin:1.2cqh auto 0;overflow:visible}
+.now-in{position:absolute;z-index:2;left:0;right:0;top:292px;text-align:center}
+.now .script{display:none}
+.month-svg{width:1340px;height:250px;display:block;margin:0 auto;overflow:visible}
+.month-rule{
+  display:block;width:74%;height:5px;margin:-6px auto 0;background:#fff;
+  box-shadow:0 0 8px #fff, 0 0 16px rgba(255,255,255,.9);
+}
 .month-svg text{
-  font-family:Oswald,sans-serif;font-weight:500;font-size:146px;
-  fill:none;stroke:#fff;stroke-width:1.5;
+  font-family:Oswald,sans-serif;font-weight:500;font-size:196px;
+  fill:none;stroke:#fff;stroke-width:7;stroke-linejoin:round;
+  filter:drop-shadow(0 0 5px #fff) drop-shadow(0 0 14px rgba(255,255,255,.95)) drop-shadow(0 0 28px rgba(255,255,255,.65));
 }
 
 /* SPECIAL */
-.special .stage{display:grid;grid-template-columns:1fr 1fr;height:720px}
+.special .stage{
+  display:grid;grid-template-columns:39.5% 60.5%;height:720px;
+  background:url('img/tpl-special-bg.jpg') 0 0 / 100% 100% no-repeat;
+}
 .disc{
   background:#fff;color:#111;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:6%;
 }
-.disc .script{color:#161616;text-shadow:none;font-size:clamp(42px,4.6cqw,77px);line-height:.8}
+.disc .script{color:#161616;text-shadow:none;font-size:86px;line-height:.8}
 .disc .pct{
-  font-weight:700;font-size:clamp(67px,8.5cqw,131px);
+  font-weight:700;font-size:148px;
   line-height:.82;letter-spacing:-.03em;margin:2% 0;
 }
-.promo{
-  background:
-    linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.42)),
-    url('img/tpl-special.jpg') center 42%/cover no-repeat;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:6%;
-}
-.promo .kicker{font-size:clamp(11px,1.1cqw,14.4px)}
-.promo .big{
-  font-weight:600;font-size:clamp(48px,7.4cqw,115px);
-  letter-spacing:.12em;line-height:.9;margin:2% 0;
-  text-shadow:0 0 16px rgba(255,255,255,.45);
-}
+.promo{position:relative;background:none;text-align:center}
+.promo .kicker,.promo .big{display:none}
 .promo .tag{
-  font-family:Allura,cursive;font-size:clamp(35px,3.6cqw,58px);
-  text-shadow:0 0 10px rgba(255,255,255,.7);
+  position:absolute;left:0;right:0;top:57%;
+  font-family:Allura,cursive;font-size:124px;line-height:.8;color:#fff;text-align:center;
+  -webkit-text-stroke:1.5px #fff;
+  text-shadow:0 0 8px #fff, 0 0 20px rgba(255,255,255,.95), 0 0 36px rgba(255,255,255,.7);
 }
 
 /* REVIEWS */
@@ -504,10 +501,6 @@ footer .loc{color:var(--muted);font-size:.72rem;letter-spacing:.22em;text-transf
 
   <section class="panel ratio ch" id="contact" aria-label="Contact and hours">
     <div class="stage">
-    <div class="ch-photos">
-      <img src="img/tpl-contact.jpg" alt="" />
-      <img src="img/tpl-hours.jpg" alt="" />
-    </div>
     <div class="ch-grid">
       <div class="obox">
         <span class="script">Contact</span>
@@ -658,15 +651,12 @@ footer .loc{color:var(--muted);font-size:.72rem;letter-spacing:.22em;text-transf
 
   <section class="panel ratio now" aria-label="Now booking">
     <div class="stage">
-    <div class="now-photos">
-      <img src="img/tpl-now-l.jpg" alt="" />
-      <img src="img/tpl-now-r.jpg" alt="" />
-    </div>
     <div class="now-in">
       <span class="script">now booking for</span>
-      <svg class="month-svg" viewBox="0 0 1100 180" role="img" aria-label="Booking month">
-        <text id="nowMonth" x="550" y="148" text-anchor="middle">DECEMBER</text>
+      <svg class="month-svg" viewBox="0 0 1400 260" role="img" aria-label="Booking month">
+        <text id="nowMonth" x="700" y="198" text-anchor="middle">DECEMBER</text>
       </svg>
+      <span class="month-rule"></span>
     </div>
     </div>
   </section>
