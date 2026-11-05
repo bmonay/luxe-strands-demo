@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Juju Braidz · El Paso, TX (Free Preview)</title>
+<meta name="description" content="Free preview booking site made for @juju_braidz by The Booked Beauty System." />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Mr+Dafoe&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--ink:#fff;--muted:#a7a7ad;--line:rgba(255,255,255,.75);--thin:rgba(255,255,255,.22)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#000;color:#fff;font-family:Montserrat,system-ui,sans-serif;font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1140px,92%);margin:0 auto}
+section{padding:84px 0;position:relative}
+.script{font-family:'Mr Dafoe',cursive;font-weight:400;color:#fff;text-shadow:0 0 6px rgba(255,255,255,.9),0 0 18px rgba(255,255,255,.55),0 0 38px rgba(255,255,255,.3);line-height:1.05;letter-spacing:.01em}
+.caps{font-size:.7rem;font-weight:600;letter-spacing:.38em;text-transform:uppercase}
+.head{text-align:center;margin-bottom:46px}
+.head .script{font-size:clamp(2.8rem,7vw,4.4rem);display:block}
+.head .caps{display:block;margin-top:10px;color:#ddd}
+.head p{color:var(--muted);max-width:560px;margin:14px auto 0;font-size:.92rem}
+.btn{display:inline-block;background:#fff;color:#000;border:1px solid #fff;padding:13px 28px;font-weight:600;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;text-decoration:none;cursor:pointer;font-family:inherit;transition:.2s}
+.btn:hover{background:transparent;color:#fff;box-shadow:0 0 18px rgba(255,255,255,.35)}
+.btn-ghost{background:transparent;color:#fff}
+.btn-ghost:hover{background:#fff;color:#000}
+.demo{background:#fff;color:#000;text-align:center;font-size:.68rem;font-weight:600;letter-spacing:.14em;padding:8px 12px;text-transform:uppercase}
+.demo b{font-weight:800}
+header.nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--thin)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{text-decoration:none;font-family:'Mr Dafoe',cursive;font-size:1.9rem;text-shadow:0 0 8px rgba(255,255,255,.6);white-space:nowrap}
+.nav nav{display:flex;gap:26px}
+.nav nav a{text-decoration:none;font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:#ddd}
+.nav nav a:hover{color:#fff;text-shadow:0 0 8px #fff}
+.nav-r{display:flex;gap:10px;align-items:center}
+.nav-r .btn{padding:10px 18px}
+.menu-btn{display:none;background:none;border:1px solid #fff;color:#fff;padding:8px 12px;font:600 .66rem Montserrat;letter-spacing:.2em;text-transform:uppercase}
+.mobile-menu{display:none;flex-direction:column;border-top:1px solid var(--thin)}
+.mobile-menu.open{display:flex}
+.mobile-menu a{padding:14px 4%;text-decoration:none;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;border-bottom:1px solid #111}
+@media(max-width:860px){.nav nav{display:none}.menu-btn{display:block}.nav-r .btn{display:none}}
+/* hero */
+.hero{padding:0;position:relative;height:min(86vh,720px);min-height:520px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.hero img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15) brightness(.55)}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,0,0,.25),rgba(0,0,0,.75))}
+.hero-copy{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 5%}
+.hero-copy h1 .script{font-size:clamp(3.6rem,11vw,8rem);display:block;margin:14px 0}
+.hero-copy .ctas{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+/* hello */
+.hello-grid{display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:40px;align-items:center}
+.hello-grid h2 .script{font-size:clamp(3rem,7vw,4.6rem);display:block}
+.hello-grid .tag{display:block;margin-top:12px}
+.cutout{position:relative;max-width:360px;margin:0 auto}
+.cutout img{aspect-ratio:4/5;object-fit:cover;object-position:center 20%;-webkit-mask-image:linear-gradient(to bottom,#000 70%,transparent 100%);mask-image:linear-gradient(to bottom,#000 70%,transparent 100%);border-radius:200px 200px 0 0}
+.bio{color:#d6d6d6;font-size:.95rem}
+@media(max-width:860px){.hello-grid{grid-template-columns:1fr;text-align:center}}
+/* policies */
+.pol{display:grid;grid-template-columns:repeat(4,1fr)}
+.pol>div{text-align:center;padding:10px 26px;border-left:1px solid var(--line)}
+.pol>div:first-child{border-left:0}
+.pol svg{width:42px;height:42px;margin:0 auto 14px;stroke:#fff;fill:none;stroke-width:1.4;filter:drop-shadow(0 0 4px rgba(255,255,255,.5))}
+.pol h3{font-size:.74rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;margin-bottom:10px}
+.pol p{color:var(--muted);font-size:.82rem}
+@media(max-width:760px){.pol{grid-template-columns:1fr 1fr;row-gap:30px}.pol>div:nth-child(3){border-left:0}}
+/* contact/hours */
+.ch{background:linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.82)),url('../img/braiding.jpg') center/cover}
+.ch-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.obox{border:1px solid var(--line);padding:38px 30px;text-align:center;backdrop-filter:blur(2px)}
+.obox .script{font-size:3.2rem;display:block;margin-bottom:22px}
+.obox ul{list-style:none;display:grid;gap:14px}
+.obox li span{display:block;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.obox li a{text-decoration:none;font-weight:500;word-break:break-word}
+.hrs div{margin:12px 0}
+.hrs b{display:block;font-size:1.4rem;font-weight:500;letter-spacing:.18em}
+.hrs .closed{display:inline-block;border:1px solid #fff;padding:4px 16px;font-size:.7rem;letter-spacing:.3em;margin-top:6px}
+@media(max-width:760px){.ch-grid{grid-template-columns:1fr}}
+/* now booking + special */
+.nowbook{padding:0;display:grid;place-items:center;min-height:320px;background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.75)),url('../img/glam.jpg') center 30%/cover;text-align:center}
+.nowbook .script{font-size:clamp(2.2rem,6vw,3.6rem);display:block}
+.outline{font-size:clamp(3rem,12vw,8rem);font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:transparent;-webkit-text-stroke:1.5px #fff;line-height:1;filter:drop-shadow(0 0 8px rgba(255,255,255,.35))}
+.special{display:grid;grid-template-columns:1fr 2fr;padding:0}
+.special .white{background:#fff;color:#000;display:grid;place-items:center;text-align:center;padding:40px}
+.special .white .script{color:#000;text-shadow:none;font-size:2rem}
+.special .white big{display:block;font-size:3.2rem;font-weight:700;line-height:1}
+.special .dark{background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.75)),url('../img/profile.jpg') center 25%/cover;display:grid;place-items:center;text-align:center;padding:60px 20px}
+.special .dark .big{font-size:clamp(2.6rem,8vw,5.4rem);font-weight:500;letter-spacing:.06em;text-shadow:0 0 14px rgba(255,255,255,.5);line-height:1}
+.special small{display:block;margin-top:10px;color:#bbb;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase}
+@media(max-width:760px){.special{grid-template-columns:1fr}}
+/* services */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--thin);border-left:1px solid var(--thin)}
+.svc,.svc-cat{border-right:1px solid var(--thin);border-bottom:1px solid var(--thin);padding:24px}
+.svc-cat{grid-column:1/-1;text-align:center;font-family:'Mr Dafoe',cursive;font-size:2.2rem;text-shadow:0 0 10px rgba(255,255,255,.6);padding:14px}
+.svc h3{font-size:.78rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase}
+.svc .price{display:block;font-size:1.3rem;font-weight:500;margin:6px 0}
+.svc p{color:var(--muted);font-size:.84rem}
+.svc .dur{display:inline-block;margin-top:10px;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;border:1px solid var(--thin);padding:3px 10px}
+.sample-note{text-align:center;margin-top:18px;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:#fff;border:1px dashed var(--line);padding:10px;max-width:520px;margin-left:auto;margin-right:auto}
+@media(max-width:860px){.svc-grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.svc-grid{grid-template-columns:1fr}}
+/* results polaroids */
+.pola{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;padding:10px 0}
+.pola figure{background:#fff;padding:10px 10px 38px;width:min(280px,80vw);box-shadow:0 10px 30px rgba(255,255,255,.08);transition:.25s}
+.pola figure:nth-child(1){transform:rotate(-5deg)}.pola figure:nth-child(2){transform:rotate(2deg) translateY(-10px)}.pola figure:nth-child(3){transform:rotate(-2deg)}
+.pola figure:hover{transform:rotate(0) scale(1.03)}
+.pola img{aspect-ratio:4/5;object-fit:cover}
+.pola figcaption{color:#000;text-align:center;font-family:'Mr Dafoe',cursive;font-size:1.5rem;margin-top:6px}
+/* prepare */
+.checks{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:18px 34px;border:1px solid var(--line);padding:34px}
+.checks li{display:flex;gap:12px;font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.checks li::before{content:"✓";flex:none;width:18px;height:18px;border:1px solid #fff;display:grid;place-items:center;font-size:.7rem}
+@media(max-width:860px){.checks{grid-template-columns:1fr 1fr}}@media(max-width:520px){.checks{grid-template-columns:1fr}}
+/* booking */
+.book-card{max-width:640px;margin:0 auto;border:1px solid var(--line);padding:34px;background:#050505}
+.book-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:22px;border-bottom:1px solid var(--thin);padding-bottom:16px}
+.book-top h3{font-family:'Mr Dafoe',cursive;font-weight:400;font-size:2.2rem;text-shadow:0 0 10px rgba(255,255,255,.6)}
+.book-top small{color:var(--muted);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase}
+.pill{border:1px solid #fff;padding:4px 10px;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase}
+.form-grid{display:grid;gap:16px}
+.form-grid.hidden{display:none}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:block;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;margin-bottom:6px;color:#ccc}
+select,input{width:100%;background:#000;color:#fff;border:1px solid var(--thin);padding:12px;font:400 .9rem Montserrat;color-scheme:dark}
+select:focus,input:focus{outline:none;border-color:#fff;box-shadow:0 0 10px rgba(255,255,255,.25)}
+.times{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.times button{background:#000;color:#fff;border:1px solid var(--thin);padding:10px;font:500 .78rem Montserrat;cursor:pointer}
+.times button.selected,.times button:hover{background:#fff;color:#000}
+.fine{text-align:center;color:var(--muted);font-size:.74rem}
+.confirm{display:none;text-align:center}
+.confirm.show{display:block}
+.confirm .check{width:56px;height:56px;border:1px solid #fff;border-radius:50%;display:grid;place-items:center;margin:0 auto 10px;font-size:1.4rem;box-shadow:0 0 14px rgba(255,255,255,.4)}
+.confirm .script{font-size:2.8rem;display:block}
+.confirm h3{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;margin:6px 0 10px}
+.confirm p{color:var(--muted);font-size:.88rem}
+.summary{border:1px solid var(--thin);margin:18px 0;text-align:left}
+.summary div{display:flex;justify-content:space-between;padding:10px 14px;border-bottom:1px solid #151515;font-size:.85rem}
+.summary span{color:var(--muted)}
+/* reviews */
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.rev{border:1px solid var(--thin);padding:28px;position:relative}
+.rev .sample{position:absolute;top:12px;right:12px;font-size:.56rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;background:#fff;color:#000;padding:3px 8px}
+.stars{letter-spacing:.2em;margin-bottom:10px;text-shadow:0 0 6px #fff}
+.rev p{color:#ddd;font-size:.9rem}
+.who{margin-top:14px;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase}
+.who small{display:block;color:var(--muted);letter-spacing:.14em}
+@media(max-width:860px){.revs{grid-template-columns:1fr}}
+/* thank you */
+.ty-grid{display:grid;grid-template-columns:1fr 1.3fr 1fr;align-items:center;gap:30px;text-align:center}
+.phone{border:3px solid #fff;border-radius:34px;padding:8px;max-width:220px;margin:0 auto;box-shadow:0 0 22px rgba(255,255,255,.25)}
+.phone img{border-radius:26px;aspect-ratio:9/17;object-fit:cover}
+.phone.l{transform:rotate(-6deg)}.phone.r{transform:rotate(6deg)}
+.ty-grid .script{font-size:clamp(3rem,8vw,5rem);display:block}
+.handle{margin-top:14px;font-size:.8rem;letter-spacing:.24em}
+@media(max-width:760px){.ty-grid{grid-template-columns:1fr 1fr}.ty-grid .ty-copy{grid-column:1/-1;order:-1}}
+footer{border-top:1px solid var(--thin);padding:46px 0 90px;text-align:center}
+footer p{color:var(--muted);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;margin:8px 0}
+.demo-note{color:#777;font-size:.74rem;max-width:620px;margin:14px auto 0}
+.sticky-book{position:fixed;left:50%;bottom:16px;transform:translate(-50%,120px);z-index:60;transition:.3s;box-shadow:0 0 24px rgba(255,255,255,.35)}
+.sticky-book.on{transform:translate(-50%,0)}
+@media(min-width:861px){.sticky-book{display:none}}
+</style>
+</head>
+<body>
+<div class="demo">✨ Free preview made for <b>@juju_braidz</b> by The Booked Beauty System</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">Juju Braidz</a>
+    <nav aria-label="Main"><a href="#about">About</a><a href="#services">Services</a><a href="#policies">Policies</a><a href="#results">Results</a><a href="#contact">Contact</a></nav>
+    <div class="nav-r"><a class="btn" href="#book">Book Now</a><button class="menu-btn" id="menuBtn" type="button" aria-expanded="false">Menu</button></div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu"><a href="#about">About</a><a href="#services">Services</a><a href="#policies">Policies</a><a href="#results">Results</a><a href="#prep">Prepare</a><a href="#contact">Contact</a><a href="#book">Book Now</a></div>
+</header>
+
+<main id="top">
+<section class="hero" aria-label="Welcome">
+  <img src="../img/braids2.jpg" alt="Glam hair portrait (stock photo)" fetchpriority="high" />
+  <img src="../img/braids3.jpg" alt="Glam hair portrait (stock photo)" />
+  <div class="hero-copy">
+    <span class="caps">Welcome to our website</span>
+    <h1><span class="script">Juju Braidz</span></h1>
+    <span class="caps">Located in El Paso, TX</span>
+    <div class="ctas"><a class="btn" href="#book">Book Now</a><a class="btn btn-ghost" href="#services">Services</a></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap hello-grid">
+    <div><h2><span class="script">Hello Beauty!</span></h2><span class="caps tag">Your hair tech bestie</span></div>
+    <div class="cutout"><img src="../img/profile.jpg" alt="Portrait with long sleek hair (stock photo)" loading="lazy" /></div>
+    <p class="bio">Welcome! This is your booking home online — browse services, read the policies and lock in your appointment in a few taps. Based in El Paso, TX.</p>
+  </div>
+</section>
+
+<section id="policies" style="border-top:1px solid var(--thin)">
+  <div class="wrap">
+    <div class="head"><span class="script">Booking Policies</span><span class="caps">Sample policies — you set your own</span></div>
+    <div class="pol">
+      <div><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg><h3>Payment</h3><p>A $50 deposit secures your appointment and goes toward your total.</p></div>
+      <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><h3>Late Policy</h3><p>15-minute grace period. After that, a late fee or reschedule.</p></div>
+      <div><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M10 13l4 4M14 13l-4 4"/></svg><h3>Cancellation</h3><p>Please cancel or reschedule at least 48 hours ahead.</p></div>
+      <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v12M15 9c0-1.2-1.3-2-3-2s-3 .8-3 2 1.3 1.8 3 2 3 .8 3 2-1.3 2-3 2-3-.8-3-2"/></svg><h3>Refund Policy</h3><p>Deposits are non-refundable. No-shows forfeit the deposit.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="nowbook" aria-label="Now booking">
+  <div><span class="script">now booking for</span><div class="outline" id="nowMonth">December</div></div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="head"><span class="script">Services</span><span class="caps">Braids &amp; locs</span></div>
+    <div class="svc-grid"><div class="svc-cat">Braids</div><div class="svc"><h3>Knotless Braids</h3><span class="price">$220+</span><p>Small–medium, mid-back length.</p><span class="dur">4–6 hrs</span></div><div class="svc"><h3>Boho Knotless</h3><span class="price">$280+</span><p>Knotless with curly pieces throughout.</p><span class="dur">5–7 hrs</span></div><div class="svc"><h3>Stitch Feed-Ins</h3><span class="price">$120</span><p>Straight-back feed-ins, clean parts.</p><span class="dur">2 hrs</span></div><div class="svc-cat">Locs</div><div class="svc"><h3>Loc Retwist</h3><span class="price">$85+</span><p>Palm roll or interlock maintenance.</p><span class="dur">2 hrs</span></div><div class="svc"><h3>Starter Locs</h3><span class="price">$150+</span><p>Comb coils or two-strand starters.</p><span class="dur">2–3 hrs</span></div><div class="svc"><h3>Retwist &amp; Style</h3><span class="price">$110+</span><p>Retwist plus a fresh style.</p><span class="dur">2.5 hrs</span></div></div>
+    <div class="sample-note">Sample pricing - you set your own</div>
+    <div style="text-align:center;margin-top:34px"><a class="btn" href="#book">Book Now</a></div>
+  </div>
+</section>
+
+<section class="special" aria-label="Monthly special">
+  <div class="white"><div><span class="script">enjoy</span><big>15%</big><span class="caps">off first visit</span></div></div>
+  <div class="dark"><div><span class="caps">This month's</span><div class="big">SPECIAL</div><small>Sample promo for this demo</small></div></div>
+</section>
+
+<section id="results">
+  <div class="wrap">
+    <div class="head"><span class="script">Client Results!</span><span class="caps">Sample stock imagery</span></div>
+    <div class="pola">
+      <figure><img src="../img/braids2.jpg" alt="Hairstyle example (stock photo)" loading="lazy" /><figcaption>knotless</figcaption></figure>
+      <figure><img src="../img/bw.jpg" alt="Hairstyle example (stock photo)" loading="lazy" /><figcaption>styled</figcaption></figure>
+      <figure><img src="../img/braids3.jpg" alt="Hairstyle example (stock photo)" loading="lazy" /><figcaption>long braids</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="ch">
+  <div class="wrap ch-grid">
+    <div class="obox"><span class="script">Contact</span><ul><li><span>Call / Text</span><a href="tel:9152497954">915-249-7954</a></li><li><span>Instagram</span><a href="https://www.instagram.com/juju_braidz/" target="_blank" rel="noopener">@juju_braidz</a></li></ul></div>
+    <div class="obox hrs"><span class="script">Hours</span>
+      <div><span class="caps">Tue – Fri</span><b>9 AM – 6 PM</b></div>
+      <div><span class="caps">Saturday</span><b>8 AM – 3 PM</b></div>
+      <div><span class="caps">Sun &amp; Mon</span><br><span class="closed">Closed</span></div>
+      <p class="fine" style="margin-top:14px">Sample hours — you set your own</p>
+    </div>
+  </div>
+</section>
+
+<section id="prep">
+  <div class="wrap">
+    <div class="head"><span class="script">Prepare For Appointment</span></div>
+    <ul class="checks">
+      <li>Make sure deposit is paid</li><li>Arrive with clean, dry hair</li><li>Arrive on time</li>
+      <li>Confirm your booking time</li><li>No extra guests please</li><li>Dress comfortably</li>
+    </ul>
+  </div>
+</section>
+
+<section id="book" style="border-top:1px solid var(--thin)">
+  <div class="wrap">
+    <div class="head"><span class="script">Book Now</span><span class="caps">Pick your service, date &amp; time</span><p>This demo doesn't charge a card or send a real booking.</p></div>
+    <div class="book-card">
+      <div class="book-top"><div><h3>Juju Braidz</h3><small>El Paso, TX</small></div><span class="pill">Demo widget</span></div>
+      <form id="bookingForm" class="form-grid" novalidate>
+        <div><label for="service">Service</label><select id="service" name="service" required><option value="">Select a service…</option><option value="Knotless Braids · $220+ · 4–6 hrs">Knotless Braids · $220+</option><option value="Boho Knotless · $280+ · 5–7 hrs">Boho Knotless · $280+</option><option value="Stitch Feed-Ins · $120 · 2 hrs">Stitch Feed-Ins · $120</option><option value="Loc Retwist · $85+ · 2 hrs">Loc Retwist · $85+</option><option value="Starter Locs · $150+ · 2–3 hrs">Starter Locs · $150+</option><option value="Retwist &amp; Style · $110+ · 2.5 hrs">Retwist &amp; Style · $110+</option></select></div>
+        <div class="row2">
+          <div><label for="date">Date</label><input type="date" id="date" name="date" required /></div>
+          <div><label for="name">Name</label><input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required /></div>
+        </div>
+        <div><label for="phone">Phone</label><input type="tel" id="phone" name="phone" placeholder="(555) 555-0142" autocomplete="tel" required /></div>
+        <div><label>Time</label>
+          <div class="times" id="timeSlots" role="group" aria-label="Time slots">
+            <button type="button" data-time="9:00 AM">9:00 AM</button><button type="button" data-time="10:30 AM">10:30 AM</button><button type="button" data-time="12:00 PM">12:00 PM</button>
+            <button type="button" data-time="1:30 PM">1:30 PM</button><button type="button" data-time="3:00 PM">3:00 PM</button><button type="button" data-time="4:30 PM">4:30 PM</button>
+          </div>
+          <input type="hidden" id="time" name="time" required />
+        </div>
+        <button class="btn" type="submit" style="width:100%">Book Now · $50 Deposit</button>
+        <p class="fine">Demo only — no payment is taken and no appointment is created.</p>
+      </form>
+      <div class="confirm" id="confirmScreen" aria-live="polite">
+        <div class="check">✓</div><span class="script">See you soon!</span><h3>You're on the books</h3>
+        <p>On a live site, a confirmation text with the address and prep reminders would go out now.</p>
+        <div class="summary" id="confirmSummary"></div>
+        <button class="btn btn-ghost" type="button" id="bookAnother">Book another (reset)</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="head"><span class="script">Kind Words</span><span class="caps">Sample reviews — not real clients</span></div>
+    <div class="revs">
+      <div class="rev"><span class="sample">Sample</span><div class="stars">★★★★★</div><p>“My knotless were neat, light and done right on time. Obsessed!”</p><div class="who">Jasmine R. <small>Sample review</small></div></div>
+      <div class="rev"><span class="sample">Sample</span><div class="stars">★★★★★</div><p>“Parts were so clean and the braids lasted weeks.”</p><div class="who">Keisha M. <small>Sample review</small></div></div>
+      <div class="rev"><span class="sample">Sample</span><div class="stars">★★★★★</div><p>“Easy booking, friendly vibe, and I left feeling brand new.”</p><div class="who">Ariana T. <small>Sample review</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="thanks" style="border-top:1px solid var(--thin)">
+  <div class="wrap ty-grid">
+    <div class="phone l"><img src="../img/braids3.jpg" alt="Client selfie (stock photo)" loading="lazy" /></div>
+    <div class="ty-copy"><span class="script">Thank You!</span><span class="caps" style="display:block;margin-top:12px">Don't forget to tag us in your pictures!</span><div class="handle">@juju_braidz</div></div>
+    <div class="phone r"><img src="../img/glam.jpg" alt="Client selfie (stock photo)" loading="lazy" /></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top">Juju Braidz</a>
+    <p>El Paso, TX · By appointment</p>
+    <div class="demo-note">Free preview made for @juju_braidz by <b>The Booked Beauty System</b>. Not affiliated with or endorsed by this business. Prices, hours, policies, promos and reviews are samples. Photos are Pexels stock (free license), not the business's own work.</div>
+  </div>
+</footer>
+<a class="btn sticky-book" href="#book">Book Now</a>
+<script>(function(){var m=["January","February","March","April","May","June","July","August","September","October","November","December"],n=new Date();var el=document.getElementById("nowMonth");if(el)el.textContent=m[(n.getMonth()+1)%12];})();</script>
+  <script>
+(function(){var sb=document.querySelector('.sticky-book'),bk=document.getElementById('book');function u(){var r=bk.getBoundingClientRect();sb.classList.toggle('on',scrollY>600&&!(r.top<innerHeight&&r.bottom>0))}addEventListener('scroll',u,{passive:true});u()})();
+    (function () {
+      var menuBtn = document.getElementById("menuBtn");
+      var mobileMenu = document.getElementById("mobileMenu");
+      menuBtn.addEventListener("click", function () {
+        var open = mobileMenu.classList.toggle("open");
+        menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      mobileMenu.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          mobileMenu.classList.remove("open");
+          menuBtn.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      var timeInput = document.getElementById("time");
+      document.querySelectorAll("#timeSlots button").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          document.querySelectorAll("#timeSlots button").forEach(function (b) { b.classList.remove("selected"); });
+          btn.classList.add("selected");
+          timeInput.value = btn.getAttribute("data-time");
+        });
+      });
+
+      var dateInput = document.getElementById("date");
+      var tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      dateInput.min = tomorrow.toISOString().slice(0, 10);
+
+      var form = document.getElementById("bookingForm");
+      var confirmScreen = document.getElementById("confirmScreen");
+      var summary = document.getElementById("confirmSummary");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (!form.service.value || !form.date.value || !form.name.value || !form.phone.value || !timeInput.value) {
+          alert("Please complete all fields and select a time.");
+          return;
+        }
+        var d = form.date.value;
+        summary.innerHTML =
+          "<div><span>Service</span><strong>" + form.service.value.split(" · ")[0] + "</strong></div>" +
+          "<div><span>Date</span><strong>" + d + "</strong></div>" +
+          "<div><span>Time</span><strong>" + timeInput.value + "</strong></div>" +
+          "<div><span>Name</span><strong>" + form.name.value + "</strong></div>" +
+          "<div><span>Phone</span><strong>" + form.phone.value + "</strong></div>" +
+          "<div><span>Deposit</span><strong>$50 (demo)</strong></div>";
+        form.classList.add("hidden");
+        confirmScreen.classList.add("show");
+      });
+
+      document.getElementById("bookAnother").addEventListener("click", function () {
+        form.reset();
+        timeInput.value = "";
+        document.querySelectorAll("#timeSlots button").forEach(function (b) { b.classList.remove("selected"); });
+        confirmScreen.classList.remove("show");
+        form.classList.remove("hidden");
+      });
+    })();
+  </script>
+
+</body>
+</html>
