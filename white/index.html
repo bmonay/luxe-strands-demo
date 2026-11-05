@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Styled by Nia · Houston, TX (Demo Booking Site)</title>
+<meta name="description" content="Demo booking site for a fictional Houston hair stylist. Built by The Booked Beauty System." />
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#ffffff" />
+<!--
+  White demo landing page. Photos are crops from the licensed white banner template.
+  The root page is a separate dark demo and is not edited from here.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{--ink:#161616;--muted:#3a3a3a;--line:#111;--thin:#d9d9d9}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:#fff;color:var(--ink);
+  font-family:Montserrat,system-ui,sans-serif;
+  font-weight:400;line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select{font-family:inherit}
+.script{font-family:Allura,cursive;font-weight:400;color:#111;line-height:.86}
+.caps{
+  font-weight:500;letter-spacing:.42em;text-transform:uppercase;
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:#111;color:#fff;border:1px solid #111;
+  padding:12px 18px;font-weight:600;font-size:.68rem;
+  letter-spacing:.22em;text-transform:uppercase;cursor:pointer;
+}
+.btn:hover{background:#fff;color:#111}
+.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+  outline:2px solid #111;outline-offset:3px;
+}
+.demo{
+  background:#111;color:#fff;text-align:center;
+  font-size:.62rem;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;padding:7px 12px;
+}
+header.nav{
+  position:sticky;top:0;z-index:50;background:#fff;
+  border-bottom:1px solid #eee;
+}
+.nav-in{
+  width:min(1280px,94%);margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  height:54px;gap:16px;
+}
+.logo{font-family:Allura,cursive;font-size:2rem;line-height:1;white-space:nowrap;color:#111}
+.nav nav{display:flex;gap:22px}
+.nav nav a{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:#333;font-weight:500}
+.nav nav a:hover{color:#000}
+.nav-r{display:flex;gap:10px;align-items:center}
+.nav-r .btn{padding:9px 14px}
+.menu-btn{
+  display:none;background:#fff;border:1px solid #111;color:#111;
+  padding:8px 10px;font:600 .62rem Montserrat,sans-serif;
+  letter-spacing:.18em;text-transform:uppercase;cursor:pointer;
+}
+.mobile-menu{display:none;flex-direction:column;border-top:1px solid #eee}
+.mobile-menu.open{display:flex}
+.mobile-menu a{
+  padding:14px 5%;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+  border-bottom:1px solid #f2f2f2;
+}
+.panel{position:relative;width:100%;background:#fff;overflow:hidden}
+.ratio{aspect-ratio:2/1}
+.panel.ratio{container-type:inline-size}
+.stage{
+  position:absolute;top:0;left:0;width:1440px;height:720px;
+  transform-origin:top left;background:#fff;
+}
+
+/* 1 HERO */
+.hero .top{
+  position:absolute;top:78px;left:0;right:0;text-align:center;
+  font-size:20px;letter-spacing:.46em;
+}
+.hero h1{
+  position:absolute;left:0;right:0;top:168px;text-align:center;
+}
+.hero h1 .script{font-size:228px;display:block}
+.hero .bot{
+  position:absolute;left:0;right:0;bottom:78px;text-align:center;
+  font-size:18px;letter-spacing:.48em;
+}
+
+/* 2 MEET */
+.meet-copy{position:absolute;left:80px;top:150px;width:740px}
+.meet .kicker{font-size:22px;letter-spacing:.48em}
+.meet h2 .script{font-size:108px;display:block;margin:16px 0 26px;white-space:nowrap}
+.meet .bio{font-size:22px;line-height:1.45;color:#1c1c1c;max-width:640px}
+.arch{position:absolute;left:824px;top:74px;width:521px;height:572px}
+.arch img{width:100%;height:100%;object-fit:fill}
+
+/* 3 CONTACT */
+.ch .stage{display:grid;grid-template-columns:1fr 1fr;align-items:center}
+.ch-col{text-align:center;padding:40px 80px}
+.ch .script{font-size:168px;display:block;margin-bottom:18px}
+.ch p{font-size:24px;margin:22px 0;color:#1a1a1a}
+.ch b{font-weight:700}
+.closed{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:420px;height:92px;border:3px solid #111;margin:18px 0 8px;
+  letter-spacing:.34em;font-weight:600;font-size:28px;text-transform:uppercase;
+}
+.ch .when{letter-spacing:.18em;font-weight:600;font-size:26px;text-transform:uppercase}
+
+/* 4 POLICIES */
+.pol-kicker{position:absolute;top:70px;left:0;right:0;text-align:center;font-size:16px;letter-spacing:.46em}
+.pol h2{position:absolute;top:100px;left:0;right:0;text-align:center}
+.pol h2 .script{font-size:150px}
+.pol-grid{
+  position:absolute;left:70px;right:70px;top:400px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:28px;text-align:center;
+}
+.pol-grid svg{width:78px;height:78px;stroke:#111;fill:none;stroke-width:1.4;margin:0 auto 18px}
+.pol-grid h3{font-size:20px;letter-spacing:.16em;font-weight:700;margin-bottom:14px}
+.pol-grid p{font-size:16px;line-height:1.45;color:#222;padding:0 8px}
+
+/* 5 PREPARE */
+.prep h2{position:absolute;top:48px;left:0;right:0;text-align:center}
+.prep h2 .script{font-size:132px}
+.prep-grid{
+  position:absolute;left:80px;right:80px;top:340px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:36px 48px;
+}
+.prep-grid h3{font-size:18px;letter-spacing:.14em;font-weight:700;margin-bottom:10px}
+.prep-grid p{font-size:17px;line-height:1.4;color:#222}
+
+/* 6 REVIEWS */
+.revs h2{position:absolute;top:18px;left:0;right:0;text-align:center}
+.revs h2 .script{font-size:168px}
+.revs .note{
+  position:absolute;top:292px;left:0;right:0;text-align:center;
+  font-size:14px;letter-spacing:.32em;color:#444;
+}
+.rev-grid{
+  position:absolute;left:60px;right:60px;top:348px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;
+}
+.sample{
+  display:inline-block;border:1px solid #111;padding:3px 8px;
+  font-size:11px;letter-spacing:.22em;font-weight:700;margin-bottom:10px;
+}
+.stars{color:#f0b400;letter-spacing:.14em;font-size:26px;margin-bottom:10px}
+.rev-grid .who{font-weight:700;font-size:18px;margin-bottom:8px}
+.rev-grid .quote{font-size:15px;line-height:1.4;color:#222;padding:0 8px}
+
+/* 7 SERVICES */
+.loved h2{position:absolute;top:8px;left:0;right:0;text-align:center}
+.loved h2 .script{font-size:140px}
+.loved-row{
+  position:absolute;left:72px;right:72px;top:246px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+}
+.loved-row img{width:100%;height:334px;object-fit:cover}
+.loved-row figcaption{
+  text-align:center;margin-top:18px;
+  font-size:16px;letter-spacing:.36em;font-weight:500;
+}
+
+/* 8 THANK YOU */
+.ig-wrap{position:absolute;left:40px;top:40px;width:720px;height:620px}
+.ig{
+  position:absolute;background:#fff;border-radius:22px;width:390px;
+  padding:16px 16px 12px;box-shadow:0 16px 40px rgba(0,0,0,.14);
+}
+.ig.a{left:20px;top:30px;transform:rotate(-7deg);z-index:1}
+.ig.b{left:300px;top:90px;transform:rotate(1.5deg);z-index:2}
+.ig .handle{font-size:15px;margin:0 0 10px 4px}
+.ig img{width:100%;height:360px;object-fit:cover}
+.ig-bar{
+  display:flex;gap:14px;align-items:center;padding:10px 4px 2px;font-size:18px;
+}
+.ig-bar .sp{margin-left:auto}
+.ty{
+  position:absolute;right:40px;top:120px;width:620px;text-align:center;
+}
+.ty .script{font-size:118px;display:block;line-height:.92}
+.ty .tag{margin-top:28px;font-size:20px;line-height:1.45}
+.choose{
+  position:absolute;left:0;right:0;bottom:42px;text-align:center;
+  font-size:18px;letter-spacing:.42em;font-weight:600;
+}
+
+/* BOOK */
+.book{padding:28px 4% 32px;border-top:1px solid #eee;background:#fff}
+.book-card{
+  width:min(1040px,100%);margin:0 auto;
+  border:1px solid #111;padding:22px 22px 18px;background:#fff;
+  display:grid;grid-template-columns:.72fr 1.28fr;gap:22px;align-items:start;
+}
+.book-intro h2 .script{font-size:clamp(2.8rem,4vw,3.6rem);display:block;color:#111}
+.book-intro p{color:#333;font-size:.9rem;margin-top:8px;max-width:34ch}
+.pill{
+  display:inline-block;margin-top:14px;border:1px solid #111;
+  padding:4px 10px;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;
+}
+.form-grid{display:grid;gap:10px}
+.form-grid.hidden{display:none}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label{display:block;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;margin-bottom:5px;color:#333}
+select,input{
+  width:100%;background:#fff;color:#111;border:1px solid #ccc;
+  padding:10px 12px;font-size:16px;
+}
+select:focus,input:focus{outline:none;border-color:#111}
+.times{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.times button{
+  background:#fff;color:#111;border:1px solid #ccc;
+  padding:8px 4px;font-size:.78rem;font-weight:500;cursor:pointer;
+}
+.times button.selected,.times button:hover{background:#111;color:#fff}
+.fine{text-align:center;color:#666;font-size:.72rem}
+.confirm{display:none;text-align:center;padding:8px 0 4px}
+.confirm.show{display:block}
+.confirm .check{
+  width:48px;height:48px;border:1px solid #111;border-radius:50%;
+  display:grid;place-items:center;margin:0 auto 8px;font-size:1.2rem;
+}
+.confirm .script{font-size:2.6rem;display:block;color:#111}
+.confirm h3{font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;margin:4px 0 8px}
+.confirm p{color:#333;font-size:.84rem}
+.summary{border:1px solid #ddd;margin:12px 0;text-align:left}
+.summary div{display:flex;justify-content:space-between;gap:12px;padding:8px 12px;border-bottom:1px solid #eee;font-size:.82rem}
+.summary span{color:#666}
+
+footer{border-top:1px solid #eee;padding:28px 6% 88px;text-align:center}
+footer .logo{font-size:2.4rem}
+footer .loc{color:#444;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;margin:8px 0}
+.demo-note{color:#555;font-size:.78rem;max-width:680px;margin:8px auto 0;line-height:1.5}
+.demo-note b{color:#111;font-weight:600}
+.sticky-book{
+  position:fixed;left:50%;bottom:14px;transform:translate(-50%,140px);
+  z-index:60;transition:.25s;padding:12px 22px;
+}
+.sticky-book.on{transform:translate(-50%,0)}
+
+@media(max-width:980px){
+  .nav nav{display:none}
+  .menu-btn{display:block}
+}
+@media(max-width:800px){
+  .book{padding:16px 12px 18px}
+  .book-card{grid-template-columns:1fr;gap:12px;padding:16px 14px}
+  .row2{grid-template-columns:1fr}
+}
+@media(min-width:801px){
+  .sticky-book{display:none}
+}
+</style>
+</head>
+<body>
+<div class="demo">Demo site · Fictional stylist for illustration only · The Booked Beauty System</div>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="logo" href="#top">Styled by Nia</a>
+    <nav aria-label="Page">
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#policies">Policies</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#services">Services</a>
+      <a href="#book">Book</a>
+    </nav>
+    <div class="nav-r">
+      <a class="btn" href="#book">Book Now</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#policies">Policies</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#services">Services</a>
+    <a href="#book">Book Now</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="panel ratio hero" aria-label="Booking now">
+    <div class="stage">
+      <p class="caps top">Booking now for <span id="heroMonth">December</span>!</p>
+      <h1><span class="script">Styled by Nia</span></h1>
+      <p class="caps bot">Houston installs &amp; silk presses</p>
+    </div>
+  </section>
+
+  <section class="panel ratio meet" id="about" aria-label="Meet your stylist">
+    <div class="stage">
+      <div class="meet-copy">
+        <p class="caps kicker">Welcome babe!</p>
+        <h2><span class="script">Meet your stylist</span></h2>
+        <p class="bio">Hi, I’m Nia, a Houston stylist for laid installs and silk presses. Bring the photo, sit back, and leave with hair that still looks expensive on day ten. Every appointment is by booking, on time, and just for you.</p>
+      </div>
+      <div class="arch">
+        <img src="img/portrait.png" alt="Nia with platinum blonde waves" />
+      </div>
+    </div>
+  </section>
+
+  <section class="panel ratio ch" id="contact" aria-label="Contact and hours">
+    <div class="stage">
+      <div class="ch-col">
+        <span class="script">Contact</span>
+        <p><b>Address:</b> Houston, TX</p>
+        <p><b>Phone:</b> <a href="tel:7135550198">(713) 555-0198</a></p>
+        <p><b>Email:</b> <a href="mailto:hello@hairbynia.demo">hello@hairbynia.demo</a></p>
+        <p><b>Instagram:</b> <a href="https://www.instagram.com/hairbynia.demo/" target="_blank" rel="noopener">@hairbynia.demo</a></p>
+      </div>
+      <div class="ch-col">
+        <span class="script">Hours</span>
+        <p class="when">Weekday: Mon–Fri</p>
+        <p>Timings: 10:00 A.M. to 6:00 P.M.</p>
+        <div class="closed">Closed</div>
+        <p class="when">Sat &amp; Sun</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel ratio pol" id="policies" aria-label="Booking policies">
+    <div class="stage">
+      <p class="caps pol-kicker">Please go through our</p>
+      <h2><span class="script">Booking Policies</span></h2>
+      <div class="pol-grid">
+        <article>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="16" width="52" height="34" rx="4"/><path d="M6 26h52M14 38h12"/><rect x="14" y="32" width="10" height="8" rx="1"/></svg>
+          <h3>PAYMENT</h3>
+          <p>A $50 deposit holds your chair and goes toward the service. The rest is due at your appointment.</p>
+        </article>
+        <article>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="34" r="18"/><path d="M32 24v12l8 5"/><path d="M32 10v6M26 12h12"/></svg>
+          <h3>LATE POLICY</h3>
+          <p>A 15 minute grace period is given. After that the service may be shortened or the chair released.</p>
+        </article>
+        <article>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M44 22a16 16 0 1 0 4 14"/><path d="M44 14v10h-10"/><path d="M32 28v12M36 32c0-2-1.6-3-4-3s-4 1-4 3 1.6 2.6 4 3 4 1 4 3-1.6 3-4 3-4-1-4-3"/></svg>
+          <h3>REFUNDS</h3>
+          <p>Deposits are non-refundable. A no-show releases the chair and the deposit stays with the booking.</p>
+        </article>
+        <article>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="16" width="44" height="38" rx="3"/><path d="M10 28h44M22 10v10M42 10v10M22 40h6M36 40h6M22 48h6"/></svg>
+          <h3>CANCELLATION</h3>
+          <p>48 hour notice is required to cancel or reschedule so the slot can be filled.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel ratio prep" id="prep" aria-label="Prepare for your appointment">
+    <div class="stage">
+      <h2><span class="script">Prepare for appointment</span></h2>
+      <div class="prep-grid">
+        <article>
+          <h3>DEPOSIT POLICY</h3>
+          <p>Make sure your $50 deposit is paid to secure the slot. Bookings without a deposit are not confirmed.</p>
+        </article>
+        <article>
+          <h3>BOOKING CONFIRMATION</h3>
+          <p>Please confirm your appointment time ahead of the visit. Unconfirmed slots may be released.</p>
+        </article>
+        <article>
+          <h3>HAIR PREP</h3>
+          <p>Arrive with clean, dry hair. No oils, product, or buildup, please.</p>
+        </article>
+        <article>
+          <h3>GUESTS POLICY</h3>
+          <p>No extra guests during your appointment. Please come alone so the session stays on time.</p>
+        </article>
+        <article>
+          <h3>PUNCTUALITY</h3>
+          <p>Please arrive on time. Late arrivals may shorten the service or move the booking.</p>
+        </article>
+        <article>
+          <h3>DRESS CODE</h3>
+          <p>Wear a comfy top that is easy to change in and out of.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel ratio revs" id="reviews" aria-label="Sample reviews">
+    <div class="stage">
+      <h2><span class="script">Our Reviews</span></h2>
+      <p class="caps note">Sample reviews — not real clients</p>
+      <div class="rev-grid">
+        <article>
+          <span class="sample">SAMPLE</span>
+          <div class="stars" aria-label="5 stars">★★★★★</div>
+          <p class="who">Amira J.</p>
+          <p class="quote">The install was laid and booking took two minutes. Already looking at round two.</p>
+        </article>
+        <article>
+          <span class="sample">SAMPLE</span>
+          <div class="stars" aria-label="5 stars">★★★★★</div>
+          <p class="who">Tasha M.</p>
+          <p class="quote">On time, gentle hands, and the silk press still had movement three days later.</p>
+        </article>
+        <article>
+          <span class="sample">SAMPLE</span>
+          <div class="stars" aria-label="5 stars">★★★★★</div>
+          <p class="who">Lena C.</p>
+          <p class="quote">I sent a photo, she matched it, and the frontal melted. Booking the next one.</p>
+        </article>
+        <article>
+          <span class="sample">SAMPLE</span>
+          <div class="stars" aria-label="5 stars">★★★★★</div>
+          <p class="who">Priya S.</p>
+          <p class="quote">Clear policies, a calm chair, and hair that looked expensive on the way out.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel ratio loved" id="services" aria-label="Most loved services">
+    <div class="stage">
+      <h2><span class="script">Most Loved Services</span></h2>
+      <div class="loved-row">
+        <figure>
+          <img src="img/svc-1.jpg" alt="Blonde waves styled as a frontal install" />
+          <figcaption>EXTENSIONS</figcaption>
+        </figure>
+        <figure>
+          <img src="img/svc-2.jpg" alt="Long black sew-in" />
+          <figcaption>WIGS</figcaption>
+        </figure>
+        <figure>
+          <img src="img/svc-3.jpg" alt="Long dark styled hair" />
+          <figcaption>COLOR</figcaption>
+        </figure>
+        <figure>
+          <img src="img/svc-4.jpg" alt="Long black hair with bangs" />
+          <figcaption>HAIRCUT</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel ratio thanks" aria-label="Thank you for booking">
+    <div class="stage">
+      <div class="ig-wrap">
+        <article class="ig a">
+          <p class="handle">@hairbynia.demo</p>
+          <img src="img/ig-1.jpg" alt="Long chestnut waves" />
+          <div class="ig-bar" aria-hidden="true"><span>♡</span><span>✎</span><span>↗</span><span class="sp">▢</span></div>
+        </article>
+        <article class="ig b">
+          <p class="handle">@hairbynia.demo</p>
+          <img src="img/ig-2.jpg" alt="Long burgundy waves" />
+          <div class="ig-bar" aria-hidden="true"><span>♡</span><span>✎</span><span>↗</span><span class="sp">▢</span></div>
+        </article>
+      </div>
+      <div class="ty">
+        <span class="script">Thank you<br>for booking!</span>
+        <p class="tag">Tag us to get featured on our page<br>@hairbynia.demo</p>
+      </div>
+      <p class="caps choose">Choose your service below</p>
+    </div>
+  </section>
+
+  <section class="book" id="book" aria-label="Book an appointment">
+    <div class="book-card">
+      <div class="book-intro">
+        <h2><span class="script">Book Now</span></h2>
+        <p>Pick a service, date, and time. This demo does not charge a card or create a real appointment.</p>
+        <span class="pill">Demo widget</span>
+      </div>
+      <form id="bookingForm" class="form-grid" novalidate>
+        <div>
+          <label for="service">Service</label>
+          <select id="service" name="service" required>
+            <option value="">Select a service…</option>
+            <option value="Frontal Install · $185 · 3 hrs">Frontal Install · $185</option>
+            <option value="Sew-In · $175 · 3 hrs">Sew-In · $175</option>
+            <option value="Knotless Braids · $220+ · 4–6 hrs">Knotless Braids · $220+</option>
+            <option value="Silk Press · $95 · 2 hrs">Silk Press · $95</option>
+            <option value="Wash &amp; Style · $75 · 90 min">Wash &amp; Style · $75</option>
+            <option value="Feed-Ins · $120 · 2 hrs">Feed-Ins · $120</option>
+          </select>
+        </div>
+        <div class="row2">
+          <div><label for="date">Date</label><input type="date" id="date" name="date" required /></div>
+          <div><label for="name">Name</label><input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required /></div>
+        </div>
+        <div><label for="phone">Phone</label><input type="tel" id="phone" name="phone" placeholder="(555) 555-0142" autocomplete="tel" required /></div>
+        <div>
+          <label>Time</label>
+          <div class="times" id="timeSlots" role="group" aria-label="Time slots">
+            <button type="button" data-time="10:00 AM">10:00 AM</button>
+            <button type="button" data-time="11:30 AM">11:30 AM</button>
+            <button type="button" data-time="1:00 PM">1:00 PM</button>
+            <button type="button" data-time="2:30 PM">2:30 PM</button>
+            <button type="button" data-time="4:00 PM">4:00 PM</button>
+            <button type="button" data-time="5:30 PM">5:30 PM</button>
+          </div>
+          <input type="hidden" id="time" name="time" required />
+        </div>
+        <button class="btn" type="submit">Book Now · $50 Deposit</button>
+        <p class="fine">Demo only — no payment is taken and no appointment is created.</p>
+      </form>
+      <div class="confirm" id="confirmScreen" aria-live="polite">
+        <div class="check">✓</div>
+        <span class="script">See you soon!</span>
+        <h3>You’re on the books</h3>
+        <p>On a live site, a confirmation text with the address and prep notes would go out now.</p>
+        <div class="summary" id="confirmSummary"></div>
+        <button class="btn" type="button" id="bookAnother" style="background:#fff;color:#111">Book another</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a class="logo" href="#top">Styled by Nia</a>
+  <p class="loc">Houston, TX · By appointment</p>
+  <p class="demo-note">Demo site by <b>The Booked Beauty System</b>. Styled by Nia is fictional. Reviews are samples. Photos are from the licensed banner template.</p>
+</footer>
+<a class="btn sticky-book" href="#book">Book Now</a>
+
+<script>
+(function () {
+  var stages = document.querySelectorAll(".panel.ratio .stage");
+  function fitBanners() {
+    stages.forEach(function (stage) {
+      stage.style.transform = "scale(" + (stage.parentElement.clientWidth / 1440) + ")";
+    });
+  }
+  fitBanners();
+  addEventListener("resize", fitBanners);
+})();
+(function () {
+  var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  var el = document.getElementById("heroMonth");
+  if (el) el.textContent = months[(new Date().getMonth() + 1) % 12];
+})();
+(function () {
+  var sb = document.querySelector(".sticky-book");
+  var bk = document.getElementById("book");
+  function u() {
+    if (!sb || !bk) return;
+    var r = bk.getBoundingClientRect();
+    var visible = r.top < innerHeight && r.bottom > 0;
+    sb.classList.toggle("on", scrollY > 400 && !visible);
+  }
+  addEventListener("scroll", u, { passive: true });
+  u();
+})();
+(function () {
+  var menuBtn = document.getElementById("menuBtn");
+  var mobileMenu = document.getElementById("mobileMenu");
+  menuBtn.addEventListener("click", function () {
+    var open = mobileMenu.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  mobileMenu.querySelectorAll("a").forEach(function (a) {
+    a.addEventListener("click", function () {
+      mobileMenu.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  var timeInput = document.getElementById("time");
+  document.querySelectorAll("#timeSlots button").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      document.querySelectorAll("#timeSlots button").forEach(function (b) { b.classList.remove("selected"); });
+      btn.classList.add("selected");
+      timeInput.value = btn.getAttribute("data-time");
+    });
+  });
+
+  var dateInput = document.getElementById("date");
+  var tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  dateInput.min = tomorrow.toISOString().slice(0, 10);
+
+  var form = document.getElementById("bookingForm");
+  var confirmScreen = document.getElementById("confirmScreen");
+  var summary = document.getElementById("confirmSummary");
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c];
+    });
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!form.service.value || !form.date.value || !form.name.value.trim() || !form.phone.value.trim() || !timeInput.value) {
+      alert("Please complete all fields and select a time.");
+      return;
+    }
+    summary.innerHTML =
+      "<div><span>Service</span><strong>" + esc(form.service.value.split(" · ")[0]) + "</strong></div>" +
+      "<div><span>Date</span><strong>" + esc(form.date.value) + "</strong></div>" +
+      "<div><span>Time</span><strong>" + esc(timeInput.value) + "</strong></div>" +
+      "<div><span>Name</span><strong>" + esc(form.name.value.trim()) + "</strong></div>" +
+      "<div><span>Phone</span><strong>" + esc(form.phone.value.trim()) + "</strong></div>" +
+      "<div><span>Deposit</span><strong>$50 (demo)</strong></div>";
+    form.classList.add("hidden");
+    confirmScreen.classList.add("show");
+  });
+
+  document.getElementById("bookAnother").addEventListener("click", function () {
+    form.reset();
+    timeInput.value = "";
+    document.querySelectorAll("#timeSlots button").forEach(function (b) { b.classList.remove("selected"); });
+    confirmScreen.classList.remove("show");
+    form.classList.remove("hidden");
+  });
+})();
+</script>
+</body>
+</html>
