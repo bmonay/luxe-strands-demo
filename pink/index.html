@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hair by Nia · Houston, TX (Demo Booking Site)</title>
+<meta name="description" content="Demo booking site for a fictional Houston hair stylist. Built by The Booked Beauty System." />
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#000000" />
+<!--
+  Neon-pink demo landing page. Photos are crops from the licensed banner template.
+  The root page, /white/, and /lola/ are separate demos and are not edited from here.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --pink:#ff7eb6;
+  --bar:#f8c5d0;
+  --ink:#ffe8f4;
+  --black:#050505;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:#000;color:var(--ink);
+  font-family:Montserrat,system-ui,sans-serif;
+  font-weight:400;line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select{font-family:inherit}
+.neon{
+  font-family:Allura,cursive;font-weight:400;line-height:.85;color:#ffe9f4;
+  text-shadow:
+    0 0 2px #fff,
+    0 0 8px #ffd4ea,
+    0 0 16px #ff7eb8,
+    0 0 34px #ff4d9a,
+    0 0 52px rgba(255,45,135,.85);
+}
+.kicker{
+  font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:#ffd0e4;
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:#ff7eb6;color:#1a0a12;border:1px solid #ff7eb6;
+  padding:12px 18px;font-weight:700;font-size:.68rem;
+  letter-spacing:.2em;text-transform:uppercase;cursor:pointer;
+}
+.btn:hover{background:#fff;border-color:#fff}
+.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+  outline:2px solid #ff7eb6;outline-offset:3px;
+}
+.demo{
+  background:#1a0a12;color:#ffd0e4;text-align:center;
+  font-size:.62rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;padding:7px 12px;
+}
+header.nav{
+  position:sticky;top:0;z-index:50;background:#000;
+  border-bottom:1px solid rgba(255,126,182,.35);
+}
+.nav-in{
+  width:min(1280px,94%);margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  height:54px;gap:16px;
+}
+.logo{font-family:Allura,cursive;font-size:1.85rem;color:#ffe9f4;white-space:nowrap;line-height:1;
+  text-shadow:0 0 10px rgba(255,80,150,.7)}
+.nav nav{display:flex;gap:20px}
+.nav nav a{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#ffd0e4;font-weight:500}
+.nav nav a:hover{color:#fff}
+.nav-r{display:flex;gap:10px;align-items:center}
+.nav-r .btn{padding:9px 14px}
+.menu-btn{
+  display:none;background:#000;border:1px solid #ff7eb6;color:#ffd0e4;
+  padding:8px 10px;font:600 .62rem Montserrat,sans-serif;
+  letter-spacing:.16em;text-transform:uppercase;cursor:pointer;
+}
+.mobile-menu{display:none;flex-direction:column;border-top:1px solid rgba(255,126,182,.25);background:#000}
+.mobile-menu.open{display:flex}
+.mobile-menu a{
+  padding:14px 5%;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+  border-bottom:1px solid rgba(255,126,182,.15);color:#ffd0e4;
+}
+.panel{position:relative;width:100%;background:#000;overflow:hidden}
+.ratio{aspect-ratio:2/1}
+.panel.ratio{container-type:inline-size}
+.stage{
+  position:absolute;top:0;left:0;width:1440px;height:720px;
+  transform-origin:top left;background:#000;
+}
+.bg{position:absolute;inset:0;width:1440px;height:720px;object-fit:cover}
+
+/* 1 HERO */
+.hero .bar{
+  position:absolute;top:0;left:0;right:0;height:40px;background:var(--bar);color:#1a0a12;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;letter-spacing:.42em;
+}
+.hero .veil{
+  position:absolute;left:0;right:0;top:155px;height:405px;background:#000;
+}
+.hero h1{
+  position:absolute;left:40px;right:40px;top:250px;text-align:center;font-size:168px;
+}
+.hero .loc{
+  position:absolute;left:0;right:0;top:560px;height:100px;background:#000;
+  display:flex;align-items:center;justify-content:center;
+}
+.hero .loc span{
+  color:#ffd0e4;font-size:15px;font-weight:600;letter-spacing:.36em;
+}
+
+/* 2 HELLO */
+.hello .glow{
+  position:absolute;left:70px;top:48px;width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,80,150,.45) 0%, rgba(255,80,150,0) 70%);
+}
+.hello .circle{
+  position:absolute;left:110px;top:78px;width:420px;height:420px;border-radius:50%;overflow:hidden;
+  box-shadow:0 0 0 6px #0a0a0a, 0 0 0 8px #ffd0e4, 0 0 36px 8px rgba(255,70,150,.75);
+}
+.hello .circle img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
+.hello .name{position:absolute;left:110px;width:420px;top:530px;text-align:center;font-size:78px}
+.hello .copy{position:absolute;left:640px;top:108px;width:720px}
+.hello h2{font-size:108px}
+.hello .sub{
+  margin-top:18px;font-size:16px;font-weight:600;letter-spacing:.32em;color:#ff8ec4;
+}
+.hello .rule{width:220px;height:2px;background:#ff7eb6;margin:16px 0 18px;box-shadow:0 0 10px #ff7eb6}
+.hello .bio{font-size:20px;line-height:1.45;color:#f3d5e4;max-width:34em}
+
+/* 3 POLICIES */
+.policies h2{position:absolute;left:0;right:0;top:64px;text-align:center;font-size:92px}
+.policies .rule{
+  position:absolute;top:168px;height:2px;background:#ff7eb6;box-shadow:0 0 8px #ff7eb6;
+}
+.policies .rule.l{left:180px;width:280px}
+.policies .rule.r{right:180px;width:280px}
+.policies .cols{
+  position:absolute;left:70px;right:70px;top:250px;height:420px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:28px;
+}
+.policies article{text-align:center;padding:0 8px}
+.policies .ico{height:64px;display:grid;place-items:center;margin-bottom:14px}
+.policies .ico svg{width:46px;height:46px;stroke:#ffd0e4;fill:none;stroke-width:1.6;
+  filter:drop-shadow(0 0 6px #ff4d9a)}
+.policies h3{font-size:16px;letter-spacing:.22em;font-weight:700;color:#fff;margin-bottom:14px}
+.policies p{font-size:15px;line-height:1.4;color:#e7c3d4}
+
+/* 4 CONTACT */
+.contact .half{position:absolute;top:24px;bottom:24px;width:640px}
+.contact .left{left:50px}
+.contact .right{right:50px}
+.contact .half img{width:100%;height:100%;object-fit:cover}
+.contact .sheet{
+  position:absolute;left:7%;right:7%;bottom:5%;top:30%;
+  background:#000;z-index:1;
+}
+.contact h2{
+  position:absolute;left:8%;right:8%;top:0;height:33%;z-index:2;
+  display:flex;align-items:center;justify-content:center;
+  background:#000;font-size:82px;
+}
+.contact .lines,.contact .hours-block{z-index:3}
+.contact .lines{
+  position:absolute;left:12%;right:8%;bottom:20px;top:36%;
+  display:flex;flex-direction:column;justify-content:center;gap:16px;
+}
+.contact .lines p{display:flex;align-items:center;gap:14px;font-size:22px;font-weight:500;color:#fff}
+.contact .lines svg{width:26px;height:26px;stroke:#ffd0e4;fill:none;stroke-width:1.6;flex:none;
+  filter:drop-shadow(0 0 4px #ff4d9a)}
+.contact .hours-block{
+  position:absolute;left:10%;right:10%;top:34%;bottom:6%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;
+}
+.contact .dow{font-size:32px;font-weight:700;letter-spacing:.18em;color:#fff}
+.contact .when{font-size:16px;letter-spacing:.28em;color:#ffd0e4;font-weight:600}
+.contact .closed{
+  margin:8px 0;border:2px solid #ffd0e4;padding:8px 36px;
+  font-size:22px;font-weight:700;letter-spacing:.28em;color:#ff8ec4;
+  box-shadow:0 0 12px rgba(255,80,150,.45);
+}
+
+/* 5 RESULTS */
+.results h2{position:absolute;left:0;right:0;top:28px;text-align:center;font-size:92px}
+.results .row{
+  position:absolute;left:48px;right:48px;top:160px;height:520px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
+}
+.results figure{
+  position:relative;border:2px dashed rgba(255,208,228,.8);padding:10px;overflow:hidden;background:#111;
+}
+.results figure img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.results figcaption{
+  position:absolute;left:10px;right:10px;bottom:10px;height:64px;
+  background:#0a0a0a;color:#ffd0e4;
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:700;letter-spacing:.28em;
+}
+
+/* 6 PREPARE */
+.prepare .band{
+  position:absolute;left:0;right:0;height:18px;background:var(--bar);
+}
+.prepare .band.top{top:18px}
+.prepare .band.bot{bottom:18px}
+.prepare .title-veil{
+  position:absolute;left:0;right:0;top:110px;height:250px;background:#000;
+}
+.prepare h2{position:absolute;left:40px;right:40px;top:160px;text-align:center;font-size:100px}
+.prepare .box{
+  position:absolute;left:24px;right:24px;top:370px;height:280px;
+  background:#000;
+  border:1.5px solid rgba(255,208,228,.75);
+  display:grid;grid-template-columns:1.2fr 1.15fr 1fr;gap:8px 18px;
+  align-content:center;padding:22px 36px;
+}
+.prepare .box p{
+  font-size:16px;font-weight:600;letter-spacing:.08em;color:#fff;
+  display:flex;align-items:center;gap:10px;
+}
+.prepare .box p:before{
+  content:"";width:16px;height:16px;flex:none;border:1.5px solid #ff7eb6;
+  background:
+    linear-gradient(#ff7eb6,#ff7eb6) center/10px 2px no-repeat,
+    linear-gradient(#ff7eb6,#ff7eb6) center/2px 6px no-repeat;
+  box-shadow:0 0 6px #ff4d9a;
+}
+
+/* 7 THANKS */
+.thanks h2{position:absolute;left:500px;right:500px;top:150px;text-align:center;font-size:100px}
+.thanks .note{
+  position:absolute;left:500px;right:500px;top:310px;text-align:center;
+  font-size:18px;font-weight:600;letter-spacing:.2em;color:#fff;
+}
+.thanks .hash{
+  position:absolute;left:500px;right:500px;top:390px;text-align:center;
+  font-size:28px;font-weight:700;letter-spacing:.12em;color:#ff8ec4;
+  text-shadow:0 0 12px rgba(255,80,150,.7);
+}
+.thanks .heart{
+  position:absolute;color:#ff7eb6;font-size:42px;
+  text-shadow:0 0 12px #ff4d9a;
+}
+.phone{
+  position:absolute;top:28px;width:340px;height:664px;border-radius:42px;overflow:hidden;
+  box-shadow:0 0 0 10px #ffb6d0, 0 0 24px rgba(255,80,150,.45);
+  background:#111;
+}
+.phone.l{left:70px;transform:rotate(-6deg)}
+.phone.r{right:70px;transform:rotate(6deg)}
+.phone img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
+
+/* 8 SERVICES */
+.services h2{position:absolute;left:60px;top:36px;font-size:100px;width:760px;text-align:center}
+.services .rule{position:absolute;top:150px;height:2px;background:#ff7eb6;box-shadow:0 0 8px #ff7eb6}
+.services .rule.l{left:80px;width:220px}
+.services .rule.r{left:560px;width:220px}
+.services .grid{
+  position:absolute;left:70px;top:190px;width:760px;height:470px;
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+}
+.services .grid div{
+  border-top:1px solid rgba(255,208,228,.45);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+}
+.services .grid div:nth-child(odd){border-right:1px solid rgba(255,208,228,.45)}
+.services .grid strong{
+  display:block;font-size:18px;letter-spacing:.24em;font-weight:600;color:#fff;
+}
+.services .grid span{display:block;margin-top:6px;font-size:22px;color:#ff8ec4;font-weight:600}
+.services .portrait{
+  position:absolute;right:0;top:0;width:560px;height:720px;
+}
+.services .portrait img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+
+/* 9 DECEMBER */
+.dec .veil{
+  position:absolute;left:0;right:0;top:100px;height:500px;background:#000;
+}
+.dec .script{
+  position:absolute;left:0;right:0;top:165px;text-align:center;font-size:92px;
+}
+.dec .month{
+  position:absolute;left:40px;right:40px;top:280px;text-align:center;
+  font-family:"Bodoni Moda",Didot,serif;font-weight:500;font-size:150px;
+  letter-spacing:.08em;line-height:.9;color:transparent;
+  -webkit-text-stroke:3px #f6d5e2;
+  filter:drop-shadow(0 0 8px rgba(255,120,170,.9));
+}
+.dec .rule{
+  position:absolute;top:470px;left:50%;transform:translateX(-50%);
+  width:520px;height:3px;background:#ff7eb6;box-shadow:0 0 10px #ff4d9a;
+}
+
+/* 10 SPECIAL */
+.special .band{position:absolute;left:0;right:0;height:16px;background:var(--bar);z-index:2}
+.special .band.top{top:0}
+.special .band.bot{bottom:0}
+.special .badge{
+  position:absolute;left:70px;top:130px;width:430px;height:430px;border-radius:50%;
+  background:#000;border:3px solid #ffc2d8;
+  box-shadow:0 0 0 22px rgba(255,150,190,.16), 0 0 70px 8px rgba(255,70,150,.55), inset 0 0 36px rgba(255,80,150,.28);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.special .pct{
+  font-family:"Bodoni Moda",Didot,serif;font-size:128px;line-height:.8;color:#ffe9f4;
+  text-shadow:0 0 10px #fff, 0 0 22px #ff7eb6, 0 0 40px #ff4d9a;
+}
+.special .off{font-size:74px;margin-top:6px}
+.special .woman{
+  position:absolute;right:0;top:16px;width:560px;height:688px;object-fit:cover;object-position:78% 16%;
+  -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 26%, #000 100%);
+  mask-image:linear-gradient(90deg, transparent 0%, #000 26%, #000 100%);
+}
+.special .copy{
+  position:absolute;left:470px;top:200px;width:420px;text-align:center;
+}
+.special .copy .kicker{font-size:20px;letter-spacing:.36em}
+.special .copy .big{
+  margin:10px 0 0;font-family:"Bodoni Moda",serif;font-weight:500;font-size:76px;
+  letter-spacing:.06em;line-height:.9;color:transparent;-webkit-text-stroke:2px #f6d5e2;
+  filter:drop-shadow(0 0 8px rgba(255,120,170,.85));
+}
+.special .copy .neon{font-size:64px;display:block;margin-top:6px}
+
+/* BOOK */
+.book{padding:28px 4% 36px;background:#000}
+.book-card{
+  width:min(1040px,100%);margin:0 auto;
+  border:1.5px solid rgba(255,126,182,.7);padding:22px 22px 18px;background:#0c0c0c;
+  display:grid;grid-template-columns:.72fr 1.28fr;gap:22px;align-items:start;
+}
+.book-intro h2 .neon{font-size:clamp(2.8rem,4vw,3.6rem);display:block}
+.book-intro p{color:#f0d0de;font-size:.9rem;margin-top:8px;max-width:34ch}
+.pill-note{
+  display:inline-block;margin-top:14px;border:1px solid #ff7eb6;color:#ffd0e4;
+  padding:4px 10px;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;
+}
+.form-grid{display:grid;gap:10px}
+.form-grid.hidden{display:none}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label{display:block;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:5px;color:#ffd0e4}
+select,input{
+  width:100%;background:#111;color:#fff;border:1px solid rgba(255,126,182,.45);
+  padding:10px 12px;font-size:16px;
+}
+select:focus,input:focus{outline:none;border-color:#ff7eb6}
+.times{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.times button{
+  background:#111;color:#fff;border:1px solid rgba(255,126,182,.4);
+  padding:8px 4px;font-size:.78rem;font-weight:500;cursor:pointer;
+}
+.times button.selected,.times button:hover{background:#ff7eb6;color:#1a0a12;border-color:#ff7eb6}
+.fine{text-align:center;color:#c9a8b6;font-size:.72rem}
+.confirm{display:none;text-align:center;padding:8px 0 4px}
+.confirm.show{display:block}
+.confirm .check{
+  width:48px;height:48px;border:1px solid #ff7eb6;border-radius:50%;color:#ff7eb6;
+  display:grid;place-items:center;margin:0 auto 8px;font-size:1.2rem;
+}
+.confirm .neon{font-size:2.6rem;display:block}
+.confirm h3{font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;margin:4px 0 8px;color:#fff}
+.confirm p{color:#f0d0de;font-size:.84rem}
+.summary{border:1px solid rgba(255,126,182,.35);margin:12px 0;text-align:left;background:#111}
+.summary div{display:flex;justify-content:space-between;gap:12px;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,.06);font-size:.82rem}
+.summary span{color:#c9a8b6}
+
+footer{border-top:1px solid rgba(255,126,182,.3);padding:28px 6% 96px;text-align:center;background:#000}
+footer .logo{font-size:2.2rem}
+footer .loc{color:#ffd0e4;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;margin:8px 0}
+.demo-note{color:#e7c3d4;font-size:.78rem;max-width:680px;margin:8px auto 0;line-height:1.5}
+.demo-note b{color:#fff;font-weight:600}
+.sticky-book{
+  position:fixed;left:50%;bottom:14px;transform:translate(-50%,140px);
+  z-index:60;transition:.25s;padding:12px 22px;
+}
+.sticky-book.on{transform:translate(-50%,0)}
+
+@media(max-width:980px){
+  .nav nav{display:none}
+  .menu-btn{display:block}
+}
+@media(max-width:800px){
+  .book{padding:16px 12px 20px}
+  .book-card{grid-template-columns:1fr;gap:12px;padding:16px 14px}
+  .row2{grid-template-columns:1fr}
+}
+@media(min-width:801px){
+  .sticky-book{display:none}
+}
+</style>
+</head>
+<body>
+<div class="demo">Demo site · Fictional stylist for illustration only · The Booked Beauty System</div>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="logo" href="#top">Hair by Nia</a>
+    <nav aria-label="Sections">
+      <a href="#hello">Hello</a>
+      <a href="#policies">Policies</a>
+      <a href="#contact">Contact</a>
+      <a href="#results">Results</a>
+      <a href="#services">Services</a>
+      <a href="#book">Book</a>
+    </nav>
+    <div class="nav-r">
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+      <a class="btn" href="#book">Book Now</a>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#hello">Hello</a>
+    <a href="#policies">Policies</a>
+    <a href="#contact">Contact</a>
+    <a href="#results">Results</a>
+    <a href="#services">Services</a>
+    <a href="#book">Book</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="panel ratio hero" aria-label="Hair by Nia">
+    <div class="stage">
+      <img class="bg" src="img/hero.jpg" alt="Two women with long pink and blonde waves" />
+      <div class="bar">WELCOME TO OUR WEBSITE</div>
+      <div class="veil" aria-hidden="true"></div>
+      <h1 class="neon">Hair by Nia</h1>
+      <p class="loc"><span>LOCATED IN HOUSTON, TX</span></p>
+    </div>
+  </section>
+
+  <section class="panel ratio hello" id="hello" aria-label="Hello Beauty">
+    <div class="stage">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="circle">
+        <img src="img/hello-circle.jpg" alt="Nia, a Houston stylist, with long pink hair" />
+      </div>
+      <p class="neon name">Nia</p>
+      <div class="copy">
+        <h2 class="neon">Hello Beauty!</h2>
+        <p class="sub">YOUR HAIR TECH BESTIE</p>
+        <div class="rule"></div>
+        <p class="bio">I’m Nia, a Houston stylist for wig installs, sew-ins, braids, and silk presses. Send a photo of the look you want when you book, and come with clean, product-free hair so we can start on time. One client in the chair at a time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel ratio policies" id="policies" aria-label="Booking policies">
+    <div class="stage">
+      <h2 class="neon">Booking Policies</h2>
+      <div class="rule l"></div>
+      <div class="rule r"></div>
+      <div class="cols">
+        <article>
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><rect x="6" y="12" width="36" height="24" rx="3"/><path d="M6 20h36"/></svg>
+          </div>
+          <h3>PAYMENT</h3>
+          <p>A $50 deposit holds the chair. The rest is due at your appointment. Cash, Cash App, Zelle, or Venmo.</p>
+        </article>
+        <article>
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="26" r="14"/><path d="M24 18v9l6 3M18 8h12"/></svg>
+          </div>
+          <h3>LATE POLICY</h3>
+          <p>Please arrive on time. After a 15 minute grace period the chair may be released.</p>
+        </article>
+        <article>
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><rect x="8" y="10" width="32" height="30" rx="3"/><path d="M8 18h32M16 6v8M32 6v8"/></svg>
+          </div>
+          <h3>CANCELLATION</h3>
+          <p>48 hour notice is required to cancel or reschedule. The deposit keeps your date.</p>
+        </article>
+        <article>
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16"/><path d="M24 14v14M20 32h8"/></svg>
+          </div>
+          <h3>REFUND POLICY</h3>
+          <p>Deposits are non-refundable. They are applied to your service when you arrive.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel ratio contact" id="contact" aria-label="Contact and hours">
+    <div class="stage">
+      <div class="half left">
+        <img src="img/contact-l.jpg" alt="Stylist with long pink hair" />
+        <div class="sheet" aria-hidden="true"></div>
+        <h2 class="neon">Contact</h2>
+        <div class="lines">
+          <p>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="3.5"/><circle cx="17.2" cy="6.8" r=".8" fill="#ffd0e4" stroke="none"/></svg>
+            @hairbynia.demo
+          </p>
+          <p>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
+            hello@hairbynia.demo
+          </p>
+          <p>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h3l1.5 4-2 1.5a12 12 0 0 0 5 5L17 13l4 1.5V18a2 2 0 0 1-2 2A14 14 0 0 1 4 6a2 2 0 0 1 2-2z"/></svg>
+            (713) 555-0198
+          </p>
+        </div>
+      </div>
+      <div class="half right">
+        <img src="img/contact-r.jpg" alt="Client with long blonde waves" />
+        <div class="sheet" aria-hidden="true"></div>
+        <h2 class="neon">Hours</h2>
+        <div class="hours-block">
+          <p class="dow">MON–FRI</p>
+          <p class="when">10:00 A.M. TO 6:00 P.M.</p>
+          <p class="closed">CLOSED</p>
+          <p class="dow">SAT &amp; SUN</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel ratio results" id="results" aria-label="Client results">
+    <div class="stage">
+      <h2 class="neon">Client Results!</h2>
+      <div class="row">
+        <figure>
+          <img src="img/res-1.jpg" alt="Long blonde waves with a side part" />
+          <figcaption>BLONDE WAVES</figcaption>
+        </figure>
+        <figure>
+          <img src="img/res-2.jpg" alt="Blonde and rose color melt with a middle part" />
+          <figcaption>COLOR MELT</figcaption>
+        </figure>
+        <figure>
+          <img src="img/res-3.jpg" alt="Long dark waves with a full fringe" />
+          <figcaption>EXTENSIONS</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel ratio prepare" id="prepare" aria-label="Prepare for your appointment">
+    <div class="stage">
+      <img class="bg" src="img/prepare.jpg" alt="Two women with long styled hair before an appointment" />
+      <div class="band top"></div>
+      <div class="band bot"></div>
+      <div class="title-veil" aria-hidden="true"></div>
+      <h2 class="neon">Prepare For Appointment</h2>
+      <div class="box">
+        <p>Deposit is paid</p>
+        <p>Shampoo your hair</p>
+        <p>Arrive on time</p>
+        <p>Confirm your time</p>
+        <p>No extra guests</p>
+        <p>Dress comfortably</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel ratio thanks" aria-label="Tag us">
+    <div class="stage">
+      <div class="phone l"><img src="img/phone-l.jpg" alt="Long dark waves in a phone photo" /></div>
+      <div class="phone r"><img src="img/phone-r.jpg" alt="Long brown waves in a phone photo" /></div>
+      <h2 class="neon">Thank You!</h2>
+      <p class="note">DON’T FORGET TO TAG US<br>IN YOUR PICTURES!</p>
+      <p class="hash">#hairbynia</p>
+      <span class="heart" style="left:470px;top:470px" aria-hidden="true">♥</span>
+      <span class="heart" style="left:900px;top:500px;font-size:28px" aria-hidden="true">♥</span>
+    </div>
+  </section>
+
+  <section class="panel ratio services" id="services" aria-label="Services">
+    <div class="stage">
+      <h2 class="neon">Services</h2>
+      <div class="rule l"></div>
+      <div class="rule r"></div>
+      <div class="grid">
+        <div><strong>WIG INSTALL</strong><span>$185</span></div>
+        <div><strong>SEW-IN</strong><span>$175</span></div>
+        <div><strong>KNOTLESS BRAIDS</strong><span>$220+</span></div>
+        <div><strong>SILK PRESS</strong><span>$95</span></div>
+        <div><strong>WASH &amp; STYLE</strong><span>$75</span></div>
+        <div><strong>FEED-INS</strong><span>$120</span></div>
+      </div>
+      <div class="portrait">
+        <img src="img/services.jpg" alt="Stylist portrait with long pink waves" />
+      </div>
+    </div>
+  </section>
+
+  <section class="panel ratio dec" aria-label="Now booking">
+    <div class="stage">
+      <img class="bg" src="img/december.jpg" alt="Two women with long pink and blonde hair" />
+      <div class="veil" aria-hidden="true"></div>
+      <p class="neon script">now booking for</p>
+      <p class="month" id="bookMonth">DECEMBER</p>
+      <div class="rule"></div>
+    </div>
+  </section>
+
+  <section class="panel ratio special" aria-label="This month's special">
+    <div class="stage">
+      <div class="band top"></div>
+      <div class="badge">
+        <span class="pct">20%</span>
+        <span class="neon off">discount</span>
+      </div>
+      <div class="copy">
+        <p class="kicker">THIS MONTH’S</p>
+        <p class="big">SPECIAL</p>
+        <span class="neon">for new clients</span>
+      </div>
+      <img class="woman" src="img/special-woman.jpg" alt="Stylist with long pink hair" />
+      <div class="band bot"></div>
+    </div>
+  </section>
+
+  <section class="book" id="book" aria-label="Book an appointment">
+    <div class="book-card">
+      <div class="book-intro">
+        <h2><span class="neon">Book Now</span></h2>
+        <p>Pick a service, date, and time. This demo does not charge a card or create a real appointment.</p>
+        <span class="pill-note">Demo widget</span>
+      </div>
+      <form id="bookingForm" class="form-grid" novalidate>
+        <div>
+          <label for="service">Service</label>
+          <select id="service" name="service" required>
+            <option value="">Select a service…</option>
+            <option value="Wig Install · $185 · 3 hrs">Wig Install · $185</option>
+            <option value="Sew-In · $175 · 3 hrs">Sew-In · $175</option>
+            <option value="Knotless Braids · $220+ · 4–6 hrs">Knotless Braids · $220+</option>
+            <option value="Silk Press · $95 · 2 hrs">Silk Press · $95</option>
+            <option value="Wash &amp; Style · $75 · 90 min">Wash &amp; Style · $75</option>
+            <option value="Feed-Ins · $120 · 2 hrs">Feed-Ins · $120</option>
+          </select>
+        </div>
+        <div class="row2">
+          <div><label for="date">Date</label><input type="date" id="date" name="date" required /></div>
+          <div><label for="name">Name</label><input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required /></div>
+        </div>
+        <div><label for="phone">Phone</label><input type="tel" id="phone" name="phone" placeholder="(555) 555-0142" autocomplete="tel" required /></div>
+        <div>
+          <label>Time</label>
+          <div class="times" id="timeSlots" role="group" aria-label="Time slots">
+            <button type="button" data-time="10:00 AM">10:00 AM</button>
+            <button type="button" data-time="11:30 AM">11:30 AM</button>
+            <button type="button" data-time="1:00 PM">1:00 PM</button>
+            <button type="button" data-time="2:30 PM">2:30 PM</button>
+            <button type="button" data-time="4:00 PM">4:00 PM</button>
+            <button type="button" data-time="5:30 PM">5:30 PM</button>
+          </div>
+          <input type="hidden" id="time" name="time" required />
+        </div>
+        <button class="btn" type="submit">Book Now · $50 Deposit</button>
+        <p class="fine">Demo only — no payment is taken and no appointment is created.</p>
+      </form>
+      <div class="confirm" id="confirmScreen" aria-live="polite">
+        <div class="check">✓</div>
+        <span class="neon">See you soon!</span>
+        <h3>You’re on the books</h3>
+        <p>On a live site, a confirmation text with the address and prep notes would go out now.</p>
+        <div class="summary" id="confirmSummary"></div>
+        <button class="btn" type="button" id="bookAnother" style="background:transparent;color:#ffd0e4">Book another</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a class="logo" href="#top">Hair by Nia</a>
+  <p class="loc">Houston, TX · By appointment</p>
+  <p class="demo-note">Demo site by <b>The Booked Beauty System</b>. Hair by Nia is fictional. Photos are from the licensed banner template.</p>
+</footer>
+<a class="btn sticky-book" href="#book">Book Now</a>
+
+<script>
+(function () {
+  var stages = document.querySelectorAll(".panel.ratio .stage");
+  function fitBanners() {
+    stages.forEach(function (stage) {
+      stage.style.transform = "scale(" + (stage.parentElement.clientWidth / 1440) + ")";
+    });
+  }
+  fitBanners();
+  addEventListener("resize", fitBanners);
+})();
+(function () {
+  var months = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
+  var el = document.getElementById("bookMonth");
+  if (el) el.textContent = months[(new Date().getMonth() + 1) % 12];
+})();
+(function () {
+  var sb = document.querySelector(".sticky-book");
+  var bk = document.getElementById("book");
+  function u() {
+    if (!sb || !bk) return;
+    var r = bk.getBoundingClientRect();
+    var visible = r.top < innerHeight && r.bottom > 0;
+    sb.classList.toggle("on", scrollY > 400 && !visible);
+  }
+  addEventListener("scroll", u, { passive: true });
+  u();
+})();
+(function () {
+  var menuBtn = document.getElementById("menuBtn");
+  var mobileMenu = document.getElementById("mobileMenu");
+  menuBtn.addEventListener("click", function () {
+    var open = mobileMenu.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  mobileMenu.querySelectorAll("a").forEach(function (a) {
+    a.addEventListener("click", function () {
+      mobileMenu.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  var timeInput = document.getElementById("time");
+  document.querySelectorAll("#timeSlots button").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      document.querySelectorAll("#timeSlots button").forEach(function (b) { b.classList.remove("selected"); });
+      btn.classList.add("selected");
+      timeInput.value = btn.getAttribute("data-time");
+    });
+  });
+
+  var dateInput = document.getElementById("date");
+  var tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  dateInput.min = tomorrow.toISOString().slice(0, 10);
+
+  var form = document.getElementById("bookingForm");
+  var confirmScreen = document.getElementById("confirmScreen");
+  var summary = document.getElementById("confirmSummary");
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c];
+    });
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!form.service.value || !form.date.value || !form.name.value.trim() || !form.phone.value.trim() || !timeInput.value) {
+      alert("Please complete all fields and select a time.");
+      return;
+    }
+    summary.innerHTML =
+      "<div><span>Service</span><strong>" + esc(form.service.value.split(" · ")[0]) + "</strong></div>" +
+      "<div><span>Date</span><strong>" + esc(form.date.value) + "</strong></div>" +
+      "<div><span>Time</span><strong>" + esc(timeInput.value) + "</strong></div>" +
+      "<div><span>Name</span><strong>" + esc(form.name.value.trim()) + "</strong></div>" +
+      "<div><span>Phone</span><strong>" + esc(form.phone.value.trim()) + "</strong></div>" +
+      "<div><span>Deposit</span><strong>$50 (demo)</strong></div>";
+    form.classList.add("hidden");
+    confirmScreen.classList.add("show");
+  });
+
+  document.getElementById("bookAnother").addEventListener("click", function () {
+    form.reset();
+    timeInput.value = "";
+    document.querySelectorAll("#timeSlots button").forEach(function (b) { b.classList.remove("selected"); });
+    confirmScreen.classList.remove("show");
+    form.classList.remove("hidden");
+  });
+})();
+</script>
+</body>
+</html>
